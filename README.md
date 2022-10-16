@@ -30,6 +30,12 @@ Of course, feel free to download the entire source code to take a look at the pl
 
 *Arithmancy*'s development will first span from mid-October 2022 to the end of November 2022. During this time, the game will progressively be fleshed out, with more features, gameplay elements and progression as time goes on.
 
+Said development's planning can be checked out in the three main phases' respective __Git planning files__:
+
+- [Preparatory phase Git planning document](/__prep/docs/gitgraph/preparatoryPhaseGitPlanning.md)
+- [Production phase Git planning document]()
+- [Post-mortem phase Git planning document]()
+
 With each major "breakthrough" in the game's graphics, gampleplay or project development stage will come a separate release, all standardized by using a [*The Beginner's Guide* level](https://the-beginners-guide.fandom.com/wiki/List_of_levels) name as their internal codename.
 
 &nbsp;
