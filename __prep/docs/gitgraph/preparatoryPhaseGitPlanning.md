@@ -17,6 +17,9 @@ Unless specified otherwise, all date intervals are to be understood as ![a;b](/_
     - [Code structure planning](#code-structure-planning)
 - [Source](#source)
     - [`tcod` tutorial commits](#tcod-tutorial-commits)
+    - [Graphics testing](#graphics-testing)
+    - [Code structure testing](#code-structure-testing)
+    - [Game sequences testing](#game-sequences-testing)
 - [Paving the way for the production phase](#paving-the-way-for-the-production-phase)
 - [Postamble](#postamble)
 
