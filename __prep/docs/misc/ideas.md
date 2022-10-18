@@ -108,4 +108,24 @@ Words (e.g. the `smell` attribute from the `IFecalFunny` interface) are stored a
 
 ### Easter eggs
 
+#### Death quotes
+
+- If killed by a __Spooky skeleton__:<br>*IT'S A SAD THING THAT YOUR ADVENTURES HAVE ENDED HERE!! - Shadowgate (NES), 1989*
+
+- If killed by an __unfortunate divination effect__:<br>*"God does not play dice with the universe." - Albert Einstein*
+
+- If killed by a __neutral NPC__:<br>*"It takes a village!"*
+
+- If killed by __ingestion of a poisonous fruit__:<br>*"Bring me the fake fruit." - MASTER*
+
+- If killed following __Chaos Burst `1999`__:<br>*"i hope this is what you wanted." - Doctor Eggman Robotnik*
+
+&nbsp;
+
+#### *Mr. Bones*
+
 Each skeleton enemy has a very low probability of __being named "Mr. Bones"__, "Mr. Skeltal" or something of the such
+
+
+&nbsp;
+
