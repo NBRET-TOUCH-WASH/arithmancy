@@ -15,6 +15,9 @@ def main() -> None:
     #screen dimensions
     screen_width = 80
     screen_height = 50
+    #good tested out values:
+    #screen_width = 115
+    #screen_height = 65
 
 
 

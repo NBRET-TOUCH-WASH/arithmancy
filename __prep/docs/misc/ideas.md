@@ -8,6 +8,7 @@
     - [Combat](#combat)
     - [Player actions](#player-actions)
     - [UI](#ui)
+    - [Easter eggs](#easter-eggs)
 
 ---
 
@@ -102,3 +103,9 @@ Words (e.g. the `smell` attribute from the `IFecalFunny` interface) are stored a
 > __[ADJECTIVE DICT]__ `{"noun":"rot", "adjective":"rotten"}`<br>
 > __[ENCOUNTER TEXT]__ You encounter a *rotten* skeleton!<br>
 > __[EXAMINATION TEXT]__ You take a close look at the Spoopy skeleton... they smell like *rot*!
+
+&nbsp;
+
+### Easter eggs
+
+Each skeleton enemy has a very low probability of __being named "Mr. Bones"__, "Mr. Skeltal" or something of the such
