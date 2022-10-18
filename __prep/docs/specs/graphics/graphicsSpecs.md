@@ -7,6 +7,8 @@ At the time of writing, colors from preparatory images/sketches are __not__ to b
 ### Contents
 - [Global specifications](#global-specifications)
     - [Resolution](#resolution)
+    - [Standardized colors](#standardized-colors)
+    - [Character set](#character-set)
 - [Main menu](#main-menu)
 - [Main game](#main-game)
 - [Game Over screen](#game-over-screen)
@@ -24,6 +26,45 @@ The game's resolution is not specified in pixels (`px`), rather, it is specified
 - Resolution (*COLUMNS*x*LINES*): `115x65`
     - Width (*COLUMNS*) : `115`
     - height (*LINES*): `65`
+
+&nbsp;
+
+### Standardized colors
+
+*Airthmancy* uses a set of standardized colors ~~totally not taken from *Dwarf Fortress*~~:
+
+|Color|Hex code|RGB format|
+|-:|:-|:-|
+|*Black*|`#000000`|`(0,0,0)`|
+|*Dark Blue*|`#000080`|`(0,0,128)`|
+|*Light Blue*|`#0000ff`|`(0,0,255)`|
+|*Brown*|`#808000`|`(128,128,0)`|
+|*Dark Gray*|`#808080`|`(128,128,128)`|
+|*Light Gray*|`#c0c0c0`|`(192,192,192)`|
+|*Lime*|`#00ff00`|`(0,255,0)`|
+|*Green*|`#008000`|`(0,128,0)`|
+|*Purple*|`#800080`|`(128,0,128)`|
+|*Red*|`#ff0000`|`(255,0,0)`|
+|*Teal*|`#008080`|`(0,128,128)`|
+|*White*|`#ffffff`|`(255,255,0)`|*Yellow*|`#ffff00`|`(255,255,0)`|
+
+&nbsp;
+
+### Character set
+
+Much in the tradition of original [roguelikes](https://en.wikipedia.org/wiki/Roguelike) and [TUIs](https://en.wikipedia.org/wiki/Text-based_user_interface), the game uses ASCII characters in order to visualize its different elements, as such, each character needs to symbolize a specific things, dependant (or not) of the context:
+
+|Character|Usage|Remarks|
+|:-|-:|:-|
+|`@`|Player character||
+|`☺`|||
+|`☻`|||
+|`e`|||
+|`g`|||
+|`Ω`|Blob|*Can appear in different colors*|
+|`¥`|Skeleton||
+|`♣`|Tree||
+|`♠`|Bush||
 
 ---
 
