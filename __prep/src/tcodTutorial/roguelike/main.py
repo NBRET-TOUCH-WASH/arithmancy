@@ -1,11 +1,20 @@
 #coding:utf-8
 
+#$ 2022-10-21 ; 01:05 : okay that's it i'm done with type checking it fucking annoys me
+
+import copy
 import tcod
 
 from engine import Engine
+
 from entity import Entity
+import entity_factories
+
 from procgen import generate_dungeon
+
 from input_handlers import EventHandler
+
+
 
 def main() -> None:
     screen_width = 80
@@ -18,16 +27,16 @@ def main() -> None:
     room_min_size = 6
     max_rooms = 30
 
+    max_monster_per_room = 2
+
     tileset = tcod.tileset.load_tilesheet("assets/tilesheet160x160.png", 16,16, tcod.tileset.CHARMAP_CP437)
 
     event_handler = EventHandler()
 
-    player = Entity(40,25, '@', (255,255,255))
-    npc = Entity(25,25, '☻', (0,128,128))
-    entities = {player, npc}
+    player = copy.deepcopy(entity_factories.player)
 
-    game_map = generate_dungeon(max_rooms, room_min_size, room_max_size, map_width, map_height, player)
-    engine = Engine(entities=entities, event_handler=event_handler, game_map=game_map, player=player, engine_name="Fox Engine")
+    game_map = generate_dungeon(max_rooms, room_min_size, room_max_size, map_width, map_height, max_monster_per_room, player)
+    engine = Engine(event_handler=event_handler, game_map=game_map, player=player, engine_name="Fox Engine")
 
     with tcod.context.new_terminal(
         screen_width,
