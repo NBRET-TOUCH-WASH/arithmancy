@@ -11,9 +11,8 @@ This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/
 ----->
 
 
-<!--## [`v1.0.0`] - *"Entering"*
-> Hi there. Thank you very much for playing *Arithmancy*.
-
+<!--!## [`v1.0.0`] - *"Entering"*
+> The meaning of this game won't be clear just yet, please be patient with me [...] and I promise you'll see what makes it interesting.
 ---
 -->
 
@@ -26,6 +25,7 @@ This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/
 ## [Unreleased] - *"Intro"*
 
 > Provisional section for the preparatory phase.
+<!--! > Hi there. Thank you very much for playing *Arithmancy*.-->
 
 ### Added
 
