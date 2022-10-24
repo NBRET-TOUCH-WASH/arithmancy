@@ -35,11 +35,13 @@
 
 - If killed by an __unfortunate divination effect__:<br>*"God does not play dice with the universe." - Albert Einstein*
 
-- If killed by a __neutral NPC__:<br>*"It takes a village!"*
+- If killed by a __neutral NPC__:<br>*"Congratulation — It takes a village [sic]"*
 
 - If killed by __ingestion of a poisonous fruit__:<br>*"Bring me the fake fruit." - MASTER*
 
-- If killed following __Chaos Burst `1999`__:<br>*"i hope this is what you wanted." - Doctor Eggman Robotnik*
+- If killed following __Chaos Burst `1767`__:<br>*“We all wear masks, and the time comes when we cannot remove them without removing some of our own skin.” - André Berthiaume*
+
+- If killed following __Chaos Burst `1999`__:<br>*"i hope this is what you wanted." - Doctor "Eggman" Robotnik*
 
 &nbsp;
 
@@ -124,6 +126,14 @@ Words (e.g. the `smell` attribute from the `IFecalFunny` interface) are stored a
 &nbsp;
 
 ### Easter eggs
+
+#### Player Class level
+
+Different secret outcomes depending on the player character's name.
+
+- *"Warlord"* (*Warrior* class):<br>Something related to [Scythelord](https://scythelord.band/)? To their [*Warlord* song](https://scythelordofficial.bandcamp.com/track/the-flail-of-god-warlord)?
+
+&nbsp;
 
 #### *Marshall* the primary town-rat
 
