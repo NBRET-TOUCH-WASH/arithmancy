@@ -45,9 +45,11 @@ def main():
             # Printing goes here...
             # ===================== #
 
+            #Displays changes; is required to see any new stuff.
             MAIN_CONTEXT.present(MAIN_CONSOLE)
 
 
+            #event handling
             for current_event in event.wait():
                 MAIN_CONTEXT.convert_event(current_event)
                 print(current_event)
