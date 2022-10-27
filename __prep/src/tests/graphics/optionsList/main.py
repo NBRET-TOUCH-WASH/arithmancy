@@ -26,7 +26,13 @@ MAIN_CONSOLE = Console(SCREEN_WIDTH, SCREEN_HEIGHT, 'F')
 
 
 #the list of options printed on the screen
-main_list = Options(MAIN_CONSOLE,)
+main_list = Options(MAIN_CONSOLE, [
+    "Optionus Primaris",
+    "This option came in the second spot... ☻",
+    "Third time's the charm!",
+    "4:44, 4:44, 4:44, 4:44",
+    "VVVVV"
+])
 
 """
 ? the following list only serves to check whether or not the frame
@@ -91,12 +97,18 @@ def main():
                     selected_row += 1
                     if selected_row > len(main_list.options):
                         selected_row = len(main_list.options)
-                    print(selected_row)
+                    print(f"Current option row: {selected_row}")
+
                 elif isinstance(current_event, event.KeyDown) and current_event.sym == event.KeySym.UP:
                     selected_row -= 1
                     if selected_row < 1:
                         selected_row = 1
-                    print(selected_row)
+                    print(f"Current option row: {selected_row}")
+
+                elif isinstance(current_event, event.KeyDown) and current_event.sym == event.KeySym.RETURN:
+                    print(f"Selected option: \"{main_list.options[selected_row - 1]}\"")
+
+
                 elif isinstance(current_event, event.Quit):
                     raise SystemExit()
 
