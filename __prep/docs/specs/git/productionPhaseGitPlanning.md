@@ -9,14 +9,47 @@ Unless specified otherwise, all date intervals are to be understood as ![a;b](/_
 &nbsp;
 
 ### Contents
-- [Paving the way for the post-mortem phase](#paving-the-way-for-the-post-mortem-phase)
-- [Postamble](#postamble)
+- [Documentation branch](#documentation-branch)
+    - [Devlogs](#devlogs)
+- [Source branch](#source-branch)
+- [Main menu](#main-menu)
+- [Character creation](#character-creation)
+- [Maps](#maps)
+- [Entities](#entities)
+
+---
+
+## Documentation branch
+
+&nbsp;
+
+### Devlogs
+
+---
+
+## Source branch
+
+---
+
+## Main menu
+
+---
+
+## Character creation
+
+---
+
+## Maps
+
+---
+
+## Entities
 
 ---
 
 ## Postamble
 
-The production phase for *Arithmancy* should last for __30 days__ of the game's __≈47 days (1 month and 17 days)__ of allowed development (basically ranging from the __1st of November 2022__ (`2022-10-15`) to the __30th of November 2022__ (`2022-10-31`) ) until the project's deadline (near the end of November).
+The production phase for *Arithmancy* should last for __30 days__ of the game's __≈47 days (1 month and 17 days)__ of allowed development (basically ranging from the __1st of November 2022__ (`2022-11-01`) to the __30th of November 2022__ (`2022-11-30`) ) reaching the project's deadline.
 
 From this will arise version `v1.0.0`, after which the game will quite possibly enter its __post-mortem phase__ - i.e. additional development independant of the original project - without any hiccups.
 
@@ -25,26 +58,90 @@ From this will arise version `v1.0.0`, after which the game will quite possibly 
 gitGraph
 
 checkout main
-commit id: "Intitial release" tag: "v0.0.0"
+commit id:"Intitial release" tag: "v0.0.0"
 
 branch prod-docs
-commit id: "Docs setup"
+commit id:"Docs setup"
+branch prod-devlogs
 
 checkout main
 branch prod-src
-commit id: "Prod setup"
+commit id:"Prod setup"
 
-branch prod-menu
-commit id: "Main menu"
+branch prod-main-menu
+commit id:"Main menu"
 checkout prod-src
-merge prod-menu
+merge prod-main-menu
 
+checkout prod-devlogs
+commit id:"Devlog #1 : Main menu"
+checkout prod-docs
+merge prod-devlogs
+commit id:"Main menu docs"
+
+
+checkout prod-src
 branch prod-character-creation
-commit id: "Biography"
-commit id: "Fantasy race"
-commit id: "Class"
-commit id: "Traits"
-commit id: "Subsistence gifts"
+commit id:"Biography"
+commit id:"Fantasy race"
+commit id:"Class"
+commit id:"Traits"
+commit id:"Subsistence gifts"
 checkout prod-src
 merge prod-character-creation
+
+checkout prod-devlogs
+commit id:"Devlog #2 : Main menu"
+checkout prod-docs
+merge prod-devlogs
+commit id:"Character creation docs"
+
+
+checkout prod-src
+branch prod-maps
+commit id:"Static maps"
+commit id:"Dynamic elements"
+commit id:"Maps matrix"
+checkout prod-src
+merge prod-maps
+
+checkout prod-devlogs
+commit id:"Devlog #3 : Maps"
+checkout prod-docs
+merge prod-devlogs
+commit id:"Maps docs"
+
+
+checkout prod-src
+branch prod-entities
+commit id:"Player entity"
+checkout prod-src
+merge prod-entities
+
+checkout prod-devlogs
+commit id:"Devlog #4 : Player entity"
+checkout prod-docs
+merge prod-devlogs
+commit id:"Player entity docs"
+
+
+checkout main
+merge prod-src tag:"v0.1.0"
+merge prod-docs
+
+checkout prod-entities
+commit id:"Creatures" type:HIGHLIGHT
+checkout prod-src
+merge prod-entities
+
+checkout prod-devlogs
+commit id:"Devlog #5 : Creatures"
+checkout prod-docs
+merge prod-devlogs
+commit id:"Creatures docs"
+
+
+checkout main
+merge prod-src tag:"v0.2.0"
+merge prod-docs
 ```

@@ -222,16 +222,6 @@ This section regards the starting boons that the player can choose from uring ch
 
 &nbsp;
 
-### __Bloodstained mark__ ~ Blood-spilt fortitude | (↑`CON`, ↑`STR`) & (↓`DEX`, ↓`SPD`)
-
-> A unique mark on your skin and the shade of your wounds hint at the spilling of a ravaging beast's blood during your conception. Echoes of your unprecedented might reach far and wide.
-
-Increases the character's strength (`STR`) and constitution (`CON`). On the contrary, decreases the character's dexterity (`DEX`) and speed (`SPD`).
-
-Unlocks the possibility of being granted the random nickname *"the blood-bound"* (e.g. *"Avery the blood-bound"*).
-
-&nbsp;
-
 ### __August herald__ ~ Deific wyrd | ↑`EXP` rate
 
 > After much pondering, the gods have discerned something in you: not only is your existence bound to peculiarity, it is also bound to an eminence akin to that of a god, if not greater. You thus possess a divinely-crafted herald by your side since birth.
@@ -239,6 +229,16 @@ Unlocks the possibility of being granted the random nickname *"the blood-bound"*
 Increases the rate at which the player gains experience. Allows the player to level up faster in the long run.
 
 Unlocks the possibility of being granted the random nickname *"the eminent"* (e.g. *"Avery the eminent"*).
+
+&nbsp;
+
+### __Bloodstained mark__ ~ Blood-spilt fortitude | (↑`CON`, ↑`STR`) & (↓`DEX`, ↓`SPD`)
+
+> A unique mark on your skin and the shade of your wounds hint at the spilling of a ravaging beast's blood during your conception. Echoes of your unprecedented might reach far and wide.
+
+Increases the character's strength (`STR`) and constitution (`CON`). On the contrary, decreases the character's dexterity (`DEX`) and speed (`SPD`).
+
+Unlocks the possibility of being granted the random nickname *"the blood-bound"* (e.g. *"Avery the blood-bound"*).
 
 &nbsp;
 
@@ -252,21 +252,21 @@ Unlocks the possibility of being granted the random nickname *"the hasty"* (e.g.
 
 &nbsp;
 
-### __Timeless candle__ ~ Sky-born oracle | ↑`WIS` & ↓`INT`
-
-> Intrinsically linked to the aethyr via an undending candle's blaze, your wisdom transcends that of a common individual. As such, your magical prowesses appear to flourish even in the most sodden of quagmires.
-
-Increases the character's wisdom (`WIS`) as well as the rate at which it augments with experience. On the contrary, decreases the character's intelligence (`INT`), lowering the character's ability to perform Arcane and Black magic.
-
-Unlocks the possibility of being granted the random nickname *"the prophetic"* (e.g. *"Avery the prophetic"*).
-
-&nbsp;
-
 ### __*Suprēmum lexicon*__ ~ Innate scholarship | ↑`INT` & ↓`WIS`
 
 > In your possession for as long as you can remember, this dictionary helps you translate works pertaining to magic written in languages ranging from across the world.
 
 Increases the character's intelligence (`INT`) as well as the rate at which it augments with experience. On the contrary, decreases the character's wisdom (`WIS`), lowering the character's ability to perform White magic.
+
+Unlocks the possibility of being granted the random nickname *"the prophetic"* (e.g. *"Avery the prophetic"*).
+
+&nbsp;
+
+### __Timeless candle__ ~ Sky-born oracle | ↑`WIS` & ↓`INT`
+
+> Intrinsically linked to the aethyr via an undending candle's blaze, your wisdom transcends that of a common individual. As such, your magical prowesses appear to flourish even in the most sodden of quagmires.
+
+Increases the character's wisdom (`WIS`) as well as the rate at which it augments with experience. On the contrary, decreases the character's intelligence (`INT`), lowering the character's ability to perform Arcane and Black magic.
 
 Unlocks the possibility of being granted the random nickname *"the prophetic"* (e.g. *"Avery the prophetic"*).
 
