@@ -15,6 +15,7 @@ Data specifications for the __player character__ in *Arithmancy*.
         - [Priest](#priest)
         - [Warrior](#warrior)
 - [Traits](#traits)
+- [Subsistence gifts](#subsistence-gifts)
 - [Status effects](#status-effects)
     - [Acid-splattered](#acid-splattered-acid)
     - [Ablaze](#ablaze-blaz)
@@ -126,7 +127,7 @@ Class titles go as follows:
 
 #### Necromancer
 
-|Rank|Title|Remarks|Origin|
+|Rank|Title|Remarks|Origin/Reference/Inspiration|
 |:-:|:-:|:-|:-:|
 |`0`|*Judge*|__Unused__ (automatically incremented).<br>Used for debugging purposes.|Occult tarot __(Judgement ⅩⅩ)__|
 |`1`|*Dark Young*||H.P. Lovecraft's *Notebook Found in a Deserted House*|
@@ -144,7 +145,7 @@ Class titles go as follows:
 
 #### Priest
 
-|Rank|Title|Remarks|Origin|
+|Rank|Title|Remarks|Origin/Reference/Inspiration|
 |:-:|:-:|:-|:-:|
 |`0`|*Judge*|__Unused__ (automatically incremented).<br>Used for debugging purposes.|Occult tarot __(Judgement ⅩⅩ)__|
 |`1`|*Ruin Sentinel*||*Dark Souls Ⅱ*|
@@ -158,11 +159,11 @@ Class titles go as follows:
 |`9`|*Angel of Absolution*||″|
 |`10`|*Templar of Eternity*||″|
 
-&nbsp;
+<!--&nbsp;
 
 #### Rogue
 
-|Rank|Title|Remarks|Origin|
+|Rank|Title|Remarks|Origin/Reference/Inspiration|
 |:-:|:-:|:-|:-:|
 |`0`|*Judge*|__Unused__ (automatically incremented).<br>Used for debugging purposes.|Occult tarot __(Judgement ⅩⅩ)__|
 |`1`|*Major*||*Metal Gear Solid 2: Sons of Liberty*|
@@ -174,13 +175,13 @@ Class titles go as follows:
 |`7`|*Liquid Snake*||*Metal Gear Solid*|
 |`8`|*Solid Snake*||″|
 |`9`|*Boss, The*|Overwrites the character's name<br>*__i.e.__* the character's name solely becomes *"The Boss"*|*Metal Gear Solid 3: Snake Eater*|
-|`10`|*Big Boss*|Overwrites the previous title (*"The Boss"*) to *"Big Boss"*|″|
+|`10`|*Big Boss*|Overwrites the previous title (*"The Boss"*) to *"Big Boss"*|″|-->
 
 &nbsp;
 
 #### Warrior
 
-|Rank|Title|Remarks|Origin|
+|Rank|Title|Remarks|Origin/Reference/Inspiration|
 |:-:|:-:|:-|:-:|
 |`0`|*Judge*|__Unused__ (automatically incremented).<br>Used for debugging purposes.|Occult tarot __(Judgement ⅩⅩ)__|
 |`1`|*Settler*||*Sid Meier's Civilization Ⅵ*|
@@ -209,7 +210,65 @@ This section regards data related to the player character's different [attribute
 |Strength|`STR`|Raw physical strength.<br>Proportional to the chances of hitting as well as said hit's overall damage.||
 |Wisdom|`WIS`|*"[...] ability of a ___priest___ [...] to use prayers, [...] verses, just like intelligence __affects spellcasting__."* ([Angband Documentation](https://angband.readthedocs.io/en/latest/birth.html#stats)).<br>Proportional to the number of spells per level and overall spellcasting success.||
 
+---
+
+## *Subsistence gifts*
+
+> It appears the gods have deemed you worthy of their omniscient heed; as such, they adjudged that your subsistence shall be graced with peculiarity.
+> 
+> From the depths of their creationistic will, they conjure a set of divine gifts. Whether these make you whole or bring you harm, they were wilfully made as they are, all according to unfathomable sacred plans.
+
+This section regards the starting boons that the player can choose from uring character creation. These can bring the player up as much as they can bring them down.
+
 &nbsp;
+
+### __Bloodstained mark__ ~ Blood-spilt fortitude | (↑`CON`, ↑`STR`) & (↓`DEX`, ↓`SPD`)
+
+> A unique mark on your skin and the shade of your wounds hint at the spilling of a ravaging beast's blood during your conception. Echoes of your unprecedented might reach far and wide.
+
+Increases the character's strength (`STR`) and constitution (`CON`). On the contrary, decreases the character's dexterity (`DEX`) and speed (`SPD`).
+
+Unlocks the possibility of being granted the random nickname *"the blood-bound"* (e.g. *"Avery the blood-bound"*).
+
+&nbsp;
+
+### __August herald__ ~ Deific wyrd | ↑`EXP` rate
+
+> After much pondering, the gods have discerned something in you: not only is your existence bound to peculiarity, it is also bound to an eminence akin to that of a god, if not greater. You thus possess a divinely-crafted herald by your side since birth.
+
+Increases the rate at which the player gains experience. Allows the player to level up faster in the long run.
+
+Unlocks the possibility of being granted the random nickname *"the eminent"* (e.g. *"Avery the eminent"*).
+
+&nbsp;
+
+### __Lifelong breeze__ ~ Nimble limbs | ↑`SPD`
+
+> From the lightest of clays you shall be modelled, and at your sides shall always blow an aiding waft, allowing for your limbs to require noticeably much lesser efforts to stir.
+
+Increases the character's speed (`SPD`), increasing the chance to strike first in combat.
+
+Unlocks the possibility of being granted the random nickname *"the hasty"* (e.g. *"Avery the hasty"*).
+
+&nbsp;
+
+### __Timeless candle__ ~ Sky-born oracle | ↑`WIS` & ↓`INT`
+
+> Intrinsically linked to the aethyr via an undending candle's blaze, your wisdom transcends that of a common individual. As such, your magical prowesses appear to flourish even in the most sodden of quagmires.
+
+Increases the character's wisdom (`WIS`) as well as the rate at which it augments with experience. On the contrary, decreases the character's intelligence (`INT`), lowering the character's ability to perform Arcane and Black magic.
+
+Unlocks the possibility of being granted the random nickname *"the prophetic"* (e.g. *"Avery the prophetic"*).
+
+&nbsp;
+
+### __*Suprēmum lexicon*__ ~ Innate scholarship | ↑`INT` & ↓`WIS`
+
+> In your possession for as long as you can remember, this dictionary helps you translate works pertaining to magic written in languages ranging from across the world.
+
+Increases the character's intelligence (`INT`) as well as the rate at which it augments with experience. On the contrary, decreases the character's wisdom (`WIS`), lowering the character's ability to perform White magic.
+
+Unlocks the possibility of being granted the random nickname *"the prophetic"* (e.g. *"Avery the prophetic"*).
 
 ---
 
