@@ -16,16 +16,16 @@ This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/
 ---
 -->
 
-<!--## [`v0.0.0`] - *"Lecture"*
+<!--## [v?.?.?] - *"Lecture"*
 > This one gets a bit goofy.
 
 ---
 -->
 
-## [Unreleased] - *"Intro"*
+## [`v0.0.0`] - *"Intro"*
+> Hi there. Thank you very much for playing *Arithmancy*.
 
-> Provisional section for the preparatory phase.
-<!--! > Hi there. Thank you very much for playing *Arithmancy*.-->
+Undocumented changes are unsignificant as they do not correspond to the new structure.
 
 ### Added
 
@@ -36,22 +36,25 @@ This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/
     - [Changelog](/CHANGELOG.md)
 - Documentation
     - Documentation Asset·s
-        - Possible reference material: [*The Net Libram of Random Magical Effects*](/__prep/docs/assets/NLRMEv2.pdf)
+        - Possible reference material
+            - [*The Net Libram of Random Magical Effects*](/__prep/docs/assets/NLRMEv2.pdf)
+            - [`MagicalEffects.md`](__prep\docs\assets\MagicalEffects\MagicalEffects.md)
         - Game logo and associated files ([`cromniomancy.png`](/__prep/docs/assets/cromniomancy.png))
     - Miscellaneous
         - Semi-organized ideas list ([`ideas.md`](/__prep/docs/misc/ideas.md))
-    - Git planning ([`gitPlanning.md`](/__prep/docs/gitgraph/gitPlanning.md))
-    - Game sequence·s ([`characterCreation.md`](/__prep/docs/seq/characterCreation.md))
-
-### Changed
-
-- Documentation
-    - Code structure
-        - Renamed [`MainStruct1.md`](https://github.com/NBRET-TOUCH-WASH/arithmancy/blob/8166d105718c3da8e1dc872be73ebc117f44a4e6/__prep/docs/struct/MainStruct1.md) to [`classesStruct.md`](/__prep/docs/struct/classesStruct.md)
-
-### Removed
-
-- (Unused and unusable) Documentation
-    - Code structure
-        - `Entities.md`
-        - `rpgOOP.md`
+    - Specifications
+        - Data
+            - [Player data](__prep\docs\specs\data\playerData.md)
+        - [Git planning](/__prep/docs/specs/git/)
+            - [Preparatory phase](__prep\docs\specs\git\preparatoryPhaseGitPlanning.md)
+            - [Production phase](__prep\docs\specs\git\productionPhaseGitPlanning.md)
+        - Graphics ([`graphicsSpecs.md`](__prep\docs\specs\graphics\graphicsSpecs.md))
+- Preparatory source
+    - Asset·s ([`tilesheet160x160.png`](/__prep/src/tests/assets/tilesheet160x160.png))
+    - [`tcod` tutorial](https://rogueliketutorials.com/tutorials/tcod/v2/)
+    - Testing
+        - [Graphics](__prep/src/tests/graphics)
+            - Colors
+            - Options list
+            - Panels
+            - Window
