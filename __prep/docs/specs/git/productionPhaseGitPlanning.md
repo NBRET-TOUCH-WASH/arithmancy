@@ -6,6 +6,8 @@ Git planning for the __production phase__ of *Arithmancy*.
 
 Unless specified otherwise, all date intervals are to be understood as ![a;b](/__prep/docs/assets/timeIntervals.png) [segments](https://en.wikipedia.org/wiki/Interval_(mathematics)#Note_on_conflicting_terminology).
 
+An issue in *mermaid-js*' GitGraph rendering makes the completion of the production phase Git graph impossible at the time of writing. As such, it is currently incomplete as well as being buggy is left "as is".
+
 &nbsp;
 
 ### Contents
@@ -144,4 +146,28 @@ commit id:"Creatures docs"
 checkout main
 merge prod-src tag:"v0.2.0"
 merge prod-docs
+
+
+checkout prod-src
+branch prod-ui
+commit id:"Main panel"
+commit id:"Player stats panel"
+commit id:"Logs panel"
+commit id:"Entity interactions panel"
+commit id:"Items panels"
+checkout prod-src
+merge prod-ui
+
+checkout prod-src
+branch prod-interactions
+commit id:"Entities interactions"
+commit id:"Items interactions"
+checkout prod-src
+merge prod-interactions
 ```
+<!--
+checkout prod-src
+branch prod-combat
+commit id:"Combat" type:HIGHLIGHT
+checkout prod-src
+merge prod-combat-->
