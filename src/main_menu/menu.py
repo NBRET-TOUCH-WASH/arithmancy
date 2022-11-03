@@ -30,11 +30,26 @@ MAIN_MENU_HEADER_WIDTH = 97 #hardcoded but i don't think the header will change 
 
 
 #functions
-def print_main_menu(console:Console, screen_width:int, fg, bg) -> None:
+#transversal
+def change_screen(option_row:int):
+    """Changes the main menu to the according screen.\n
+    Is semi-hardcoded but fuck it."""
+    if option_row == 1:
+        raise NotImplementedError()
+    if option_row == 2:
+        return "ABOUT_SCREEN"
+    if option_row == 3:
+        return "OPTIONS_SCREEN"
+    if option_row == 4:
+        return "EXIT_GAME"
+
+
+
+#main menu
+def print_main_menu_header(console:Console, screen_width:int, fg, bg) -> None:
     console.print(screen_width//2 - MAIN_MENU_HEADER_WIDTH//2, 3,
                     MAIN_MENU_HEADER,
                     fg,bg)
-
 
 #TODO: clean this up
 def print_condensed_credits(console:Console, screen_height:int,
@@ -56,8 +71,14 @@ def print_condensed_credits(console:Console, screen_height:int,
     console.print(18, screen_height-4,
                 license, license_accent_color,(0,0,0))
 
-
 def print_version_tag(console:Console, screen_width:int, screen_height:int, version_tag:str, accent_color):
     console.print(screen_width-15 - len(version_tag)//2, screen_height-5,
                     version_tag,
                     accent_color)
+
+def print_main_menu(console:Console, screen_width:int,screen_height:int,
+                    author:str, date:str, license:str, version_tag:str,
+                    std_fg_color, std_bg_color, author_color, license_color, tag_color) -> None:
+    print_main_menu_header(console, screen_width, std_fg_color,std_bg_color)
+    print_condensed_credits(console, screen_height, author, date, license, std_fg_color, author_color, license_color)
+    print_version_tag(console, screen_width, screen_height, version_tag, tag_color)

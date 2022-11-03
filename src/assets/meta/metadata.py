@@ -2,7 +2,7 @@
 
 #info
 AUTHOR = "NBRET-TOUCH-WASH"
-YEAR = "2022"
+DATE = "2022"
 LICENSE = "[CC-BY-NC-SA 4.0]"
 
 #version tags
