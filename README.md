@@ -10,6 +10,7 @@
 
 ### Contents
 - [Info](#info)
+- [Devlogs](#devlogs)
 - [Gameplay](#gameplay)
     - [Main menu](#main-menu)
 - [Licensing](#licensing)
@@ -38,6 +39,18 @@ Custom (mainly relies on `tcod`, a python port of `libtcod`, a roguelike develop
 
 ---
 
+## Devlogs
+
+Along with each major development steps (mainly represented by each [successful pull request](https://github.com/NBRET-TOUCH-WASH/arithmancy/pulls?q=is%3Apr+is%3Aclosed)) will come a corresponding devlog and set of documentation.
+
+The first is both a way to document the changes made in a more explicit fashion than ye old [Changelog file](/CHANGELOG.md) along with documentation, it also is a way to remain motivated by sharing progress in the game's development towards a successful playable version (`v1.0.0`).
+
+Devlogs can be accessed via [their assigned directory](/docs/meta/devlogs/), or the following list:
+
+- [Devlog N°1](/docs/meta/devlogs/devlog1-mainMenu.md) - *"Beget"* | __Main menu__
+
+---
+
 ## Gameplay
 
 *Arithmancy*'s gameplay consists of controlling a character and moving about in a world divided in __tiles__. It also features semi-turn-based __combat__ and a wide array of miscellaneous activities.
@@ -48,7 +61,7 @@ Custom (mainly relies on `tcod`, a python port of `libtcod`, a roguelike develop
 
 ### Main menu
 
-![main menu](/docs/assets/gameplay/main_menu/main_menu_cropped.png)
+![main menu v0.1.0](/docs/assets/gameplay/main_menu/main_menu_cropped.png)
 
 Upon execution, players will be greeted by the game's main menu; featuring an __ASCII-art header__, __a series of options__ to choose from, __licensing information__ at the bottom left and a __version tag__ at the bottom right.
 
