@@ -9,7 +9,7 @@ class Options:
 
     def __init__(self,
                 console:Console,
-                options:list=["Beget","About","Options","Forfare"]) -> None:
+                options:list=["☺ Beget ☻","§ About §","☼ Options ☼","¥ Forfare ¥"]) -> None:
         self.options = options
         self.set_required_space(console)
 
