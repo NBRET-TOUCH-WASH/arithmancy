@@ -17,6 +17,7 @@
 #modules
 from tcod import *
 
+import private.launch_settings as launch_settings
 import assets.meta.metadata as metadata
 from assets import color_tokens
 import main_menu
@@ -64,13 +65,15 @@ def main():
                                             color_tokens.WHITE.rgb, color_tokens.BLACK.rgb,
                                             color_tokens.VIOLET.rgb, color_tokens.AQUA.rgb, color_tokens.CRIMSON.rgb)
                 MAIN_MENU_OPTIONS.print_options(MAIN_CONSOLE, SCREEN_WIDTH,SCREEN_HEIGHT, MAIN_MENU_OPTIONS_SELECTED_ROW)
-
-            elif CURRENT_SCREEN == "OPTIONS_SCREEN":
-                main_menu.print_options_screen(MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT,
-                                                color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, color_tokens.CHARTREUSE.rgb)
+                if launch_settings.DEBUG:#? has no real use right now but probably will in the future
+                    MAIN_CONSOLE.print(SCREEN_WIDTH-20,SCREEN_HEIGHT-4,"☼ DEBUG MODE ☼", color_tokens.FUSCHIA.rgb)
 
             elif CURRENT_SCREEN == "ABOUT_SCREEN":
                 main_menu.print_about_screen(MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT,
+                                                color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, color_tokens.CHARTREUSE.rgb)
+
+            elif CURRENT_SCREEN == "OPTIONS_SCREEN":
+                main_menu.print_options_screen(MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT,
                                                 color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, color_tokens.CHARTREUSE.rgb)
 
             #Displays changes; is required to see any new stuff.

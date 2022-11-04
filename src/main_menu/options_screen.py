@@ -24,7 +24,7 @@ YM      M9  MM    MM MM      MM MM     MM MM    MM      `Mb
 
 OPTIONS_SCREEN_HEADER_WIDTH = 60 #hardcoded but i don't think the header will change so it's fine
 
-OPTIONS_SCREEN_TEXT = "This time you said \"make game not fast\", so game make not fast, and game good.\nBut still no options.\n- me :) -"
+OPTIONS_SCREEN_TEXT = "This time you said \"make game not fast\", so game make not fast, and game good.\nBut still no options.\n- me ☺ -"
 
 
 #functions

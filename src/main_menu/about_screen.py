@@ -21,7 +21,7 @@ _dM_     _dMM_MYMMMM9   YMMMMM9   YMMM9MM_  YMMM9
 
 ABOUT_SCREEN_HEADER_WIDTH = 50 #hardcoded but i don't think the header will change so it's fine
 
-ABOUT_SCREEN_TEXT = "Allan, please add detail. [sic]\nTODO: add a witty and emotional text about the making of this project"
+ABOUT_SCREEN_TEXT = "\"Allan, please add detail.\" [sic]\nTODO: add a witty and emotional text about the making of this project"
 
 
 #functions
