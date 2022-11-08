@@ -102,7 +102,8 @@ def main():
                     raise SystemExit()
 
                 elif CURRENT_SCREEN == "INIT_GAME":
-                    char_creator.main_char_creation(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
+                    main_char_creation(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
+                    #char_creator.main_char_creation(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
 
 
                 if action is None:
