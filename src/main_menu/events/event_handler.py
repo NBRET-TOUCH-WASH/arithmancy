@@ -8,7 +8,7 @@ from typing import Optional
 #modules
 import tcod
 
-from .event_types import Action, MainMenuOptionAction, MainMenuOptionSelection, OptionsScreenGoBack, AboutScreenGoBack
+from .event_types import *
 
 
 
@@ -76,3 +76,19 @@ class AboutScreenEventHandler(tcod.event.EventDispatch):
             action = AboutScreenGoBack()
 
         return action
+
+
+
+#character creation
+class CharacterCreatorEventHandler(tcod.event.EventDispatch):
+    def ev_quit(self, event:tcod.event.Quit) -> Optional[Action]:
+        raise SystemExit()
+
+    #def ev_keydown(self, event: tcod.event.KeyDown) -> Optional[Action]:
+    #    action:Optional[Action] = None
+    #    key = event.sym
+
+    #    if key == tcod.event.K_ESCAPE:
+    #        action = AboutScreenGoBack()
+
+    #    return action

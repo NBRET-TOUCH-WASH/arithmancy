@@ -35,7 +35,7 @@ def change_screen(option_row:int):
     """Changes the main menu to the according screen.\n
     Is semi-hardcoded but fuck it."""
     if option_row == 1:
-        raise NotImplementedError()
+        return "INIT_GAME"
     if option_row == 2:
         return "ABOUT_SCREEN"
     if option_row == 3:
