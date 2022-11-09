@@ -29,13 +29,10 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
 
         race_ui.print_races(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
-        race_ui.print_info(console, screen_width, screen_height)
-        console.print_frame(screen_width-76,15, 35,37, "Racial Feats")
 
-        console.print_frame(screen_width-84,3, 15,10, "Race Symbol")
-        console.print(55+15//2,10,
-                    "U",
-                    color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
+        race_ui.print_info(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
+        race_ui.print_feats(console,screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
+        race_ui.print_symbol(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
 
         #little ASCII-art related to the race
         console.print_frame(screen_width-38,3, 35,49)
