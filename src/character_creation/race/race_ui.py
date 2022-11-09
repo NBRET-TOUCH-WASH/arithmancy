@@ -4,7 +4,7 @@
 from typing import List
 from tcod import Console
 
-from .race_base import CharCreationRace
+from .race_base import CharCreationRace, RacialFeat
 
 
 
@@ -21,14 +21,15 @@ humankind = Human()
     #humankind3theApeWars = Human()
     #humankind4bananasOfTheApes = Human()
     #humankind5thePhantomApe = Human()
-
 dwarvenkind = Dwarf()
+elvenkind = Elf()
 
 
 #the different races showed up on screen
 available_races = [
     humankind,
-    dwarvenkind
+    dwarvenkind,
+    elvenkind
 ]
 
 
@@ -80,7 +81,7 @@ def print_info(console:Console, screen_width:int, screen_height:int, races:List[
     #console.print(screen_width-112,16,
     #            races[highlighted_row].info,
     #            color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
-    console.print_rect(screen_width-111+31//2, (16+37)//2,
+    console.print_rect(screen_width-111+31//2, 17,
                         31,36,
                         races[highlighted_row-1].info,
                         alignment=2)
@@ -92,12 +93,36 @@ def print_feats(console:Console, screen_width:int, screen_height:int, races:List
 
     console.print_frame(screen_width-76,15, 35,37, "Racial Feats")
 
+    feats_list:List[RacialFeat] = races[highlighted_row-1].racial_feats
+
+    row = 17
+    for feat in feats_list:
+        console.print(screen_width-74, row,
+                            #33, 35,
+                            feat.name,
+                            feat.feats_types[feat.type])
+        lines = console.print_rect(screen_width-70, row + 1,
+                            27, 35,
+                            feat.info)
+                            #feat.feats_types[feat.type])
+        row += 8
+
 
 
 def print_symbol(console:Console, screen_width:int, screen_height:int, races:List[CharCreationRace], highlighted_row:int):
-    """Prints a symbol box-frame as well as the symbol corresponding to individuals of the highlighted race."""
+    """Prints a symbol box-frame as well as the symbol representing to individuals of the highlighted race."""
 
-    console.print_frame(screen_width-84,3, 15,10, "Race Symbol")
-    console.print((screen_width-84+15//2) - len(races[highlighted_row-1].symbol)//2, 3+10//2,
+    console.print_frame(screen_width-85,3, 15,10, "Race Symbol")
+    console.print((screen_width-85+15//2) - len(races[highlighted_row-1].symbol)//2, 3+10//2,
                 races[highlighted_row-1].symbol,
+                color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
+
+
+
+def print_artwork(console:Console, screen_width:int, screen_height:int, races:List[CharCreationRace], highlighted_row:int):
+    """Prints an artwork box-frame as well as a small artwork representing to individuals of the highlighted race."""
+
+    console.print_frame(screen_width-38,3, 35,49)
+    console.print(screen_width-37, 4,
+                races[highlighted_row-1].artwork,
                 color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)

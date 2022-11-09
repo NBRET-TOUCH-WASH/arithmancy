@@ -1,7 +1,8 @@
 #coding:utf-8
 
 #type hinting
-from typing import List
+from typing import List, Dict
+from .racial_feat import RacialFeat, NoRacialFeat
 
 
 
@@ -13,7 +14,16 @@ class CharCreationRace:
 
     def __init__(self) -> None:
         self.name:str
+
         self.symbol:str
         self.info:str
-        self.racial_feats:List[str]
+        self.racial_feats:List[RacialFeat]
+
         self.artwork:str
+
+    def handle_no_feats(self):
+        if self.racial_feats == []:
+            self.racial_feats = [NoRacialFeat()]
+
+    def get_number_of_artwork_lines(self):
+        return len(self.artwork.splitlines())

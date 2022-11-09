@@ -59,7 +59,7 @@ def main():
     char_creator_event_handler = CharacterCreatorEventHandler()
 
 
-    with context.new(columns=MAIN_CONSOLE.width, rows=MAIN_CONSOLE.height, tileset=SCREEN_TILESET, title="Arithmancy") as MAIN_CONTEXT:
+    with context.new(columns=MAIN_CONSOLE.width, rows=MAIN_CONSOLE.height, tileset=SCREEN_TILESET, title=f"Arithmancy {metadata.VERSION_TAG}") as MAIN_CONTEXT:
         MAIN_MENU_OPTIONS_SELECTED_ROW = 1
         CURRENT_SCREEN = "MAIN_MENU"
         while True:
