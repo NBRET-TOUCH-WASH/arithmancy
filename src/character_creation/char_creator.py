@@ -7,6 +7,8 @@ from .events import *
 
 from assets import color_tokens
 
+from .race import race_ui
+
 
 
 #functions
@@ -26,14 +28,8 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
         #                    decoration="████ ████")
 
 
-        console.print(3,3,
-                    "Select your character's fantasy race:",
-                    color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
-        console.print(3,5,
-                    "Human",
-                    color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
-
-        console.print_frame(screen_width-113,15, 35,37, "Info")
+        race_ui.print_races(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
+        race_ui.print_info(console, screen_width, screen_height)
         console.print_frame(screen_width-76,15, 35,37, "Racial Feats")
 
         console.print_frame(screen_width-84,3, 15,10, "Race Symbol")
@@ -43,51 +39,7 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
         #little ASCII-art related to the race
         console.print_frame(screen_width-38,3, 35,49)
-        console.print(screen_width-32,4, """
-██    ███   ██    ██   
-█             ██  █    
-██ █   ██   ██    ██ █ 
-█████ █████ █████ █████
-                       
-   █                 █ 
-                       
-    █                 █
-█████             █████
-                       
-██    ██    ███   ██   
-█       █         █    
-██ █    ██   ███  ██ █ 
-█████ █████ █████ █████
-                       
-   █      ██         █ 
-          ██           
-    █     ██          █
-█████     ██      █████
-          ██           
-  █        █        █  
-   █      ██       █   
-    ██    ██      █    
-      ██   █    ██     
-          ██  ██       
-      ██   █    ██     
-    ██    ██      █    
-   █      █        █   
-  █       ██        █  
- █        ██        █  
- █         █       █   
-  █       █       █    
-   █            ██     
-    ██        ██       
-  █   ███ █ ██         
-  █       █            
-  █     █████          
-  █    █ ███ █  █ ██ ██
-      █  ███  █  ██████
-█ ███    ███     ██ ███
-         █ █     ███ ██
-  █      █ █     ██████
-  █      █ █     ██    
-  █     ██ ██          """)
+        console.print(screen_width-32,4, """""")
 
 
         context.present(console)
@@ -99,5 +51,8 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
             if action is None:
                 continue
+            elif isinstance(action, OptionRowChange):
+                race_ui.highlighted_row += action.row_change
+                race_ui.highlighted_row = race_ui.clamp_highlighted_race(race_ui.highlighted_row, race_ui.available_races)
             elif isinstance(current_event, event.Quit):
                 raise SystemExit()

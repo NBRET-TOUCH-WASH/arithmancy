@@ -26,7 +26,9 @@ class CharacterCreatorEventHandler(tcod.event.EventDispatch):
         action:Optional[Action] = None
         key = event.sym
 
-        if key == tcod.event.K_ESCAPE:
-            pass
+        if key == tcod.event.K_UP:
+            action = OptionRowChange(-1)
+        elif key == tcod.event.K_DOWN:
+            action = OptionRowChange(+1)
 
         return action
