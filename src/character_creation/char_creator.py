@@ -7,7 +7,11 @@ from .events import *
 
 from assets import color_tokens
 
+from .screens import *
+from public import data
+
 from .race import race_ui
+from .bio import bio_ui
 
 
 
@@ -16,28 +20,18 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
     """Main character creation segment function."""
 
     char_creator_event_handler = CharacterCreatorEventHandler()
+    CHAR_CURRENT_SCREEN:str = "RACE_SELECTION_SCREEN"
 
     while True:
         console.clear()
 
-        #console.print_frame(0,0, screen_width,screen_height, "Character creation")
-        #console.draw_frame(0,0, screen_width,screen_height,
-        #                    #"Character creation",
-        #                    clear=False,
-        #                    fg=color_tokens.PEARL.rgb, bg=color_tokens.BLACK.rgb,
-        #                    decoration="████ ████")
-
-
-        race_ui.print_races(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
-
-        race_ui.print_info(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
-        race_ui.print_feats(console,screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
-        race_ui.print_symbol(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
-
-        race_ui.print_artwork(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
-
+        if CHAR_CURRENT_SCREEN == "RACE_SELECTION_SCREEN":
+            race_ui.print_race_selection_screen(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
+        elif CHAR_CURRENT_SCREEN == "BIO_SCREEN":
+            bio_ui.print_bio_screen(console, screen_width, screen_height)
 
         context.present(console)
+
 
         for current_event in event.wait():
             context.convert_event(current_event)
@@ -46,8 +40,17 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
             if action is None:
                 continue
+
             elif isinstance(action, OptionRowChange):
-                race_ui.highlighted_row += action.row_change
-                race_ui.highlighted_row = race_ui.clamp_highlighted_race(race_ui.highlighted_row, race_ui.available_races)
+                if CHAR_CURRENT_SCREEN == "RACE_SELECTION_SCREEN":
+                    race_ui.highlighted_row += action.row_change
+                    race_ui.highlighted_row = race_ui.clamp_highlighted_race(race_ui.highlighted_row, race_ui.available_races)
+
+            elif isinstance(action, Submit):
+                if CHAR_CURRENT_SCREEN == "RACE_SELECTION_SCREEN":
+                    data.save_char_data(data.player_data, "race", race_ui.available_races[race_ui.highlighted_row-1].name)
+                    data.export_json_char(data.player_data)
+                    CHAR_CURRENT_SCREEN = switch_screen(CHAR_CURRENT_SCREEN)
+
             elif isinstance(current_event, event.Quit):
                 raise SystemExit()

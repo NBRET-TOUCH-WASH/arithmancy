@@ -31,4 +31,7 @@ class CharacterCreatorEventHandler(tcod.event.EventDispatch):
         elif key == tcod.event.K_DOWN:
             action = OptionRowChange(+1)
 
+        elif key == tcod.event.K_RETURN:
+            action = Submit()
+
         return action

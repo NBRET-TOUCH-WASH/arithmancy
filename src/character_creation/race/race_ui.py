@@ -26,7 +26,7 @@ elvenkind = Elf()
 
 
 #the different races showed up on screen
-available_races = [
+available_races:List[CharCreationRace] = [
     humankind,
     dwarvenkind,
     elvenkind
@@ -126,3 +126,28 @@ def print_artwork(console:Console, screen_width:int, screen_height:int, races:Li
     console.print(screen_width-37, 4,
                 races[highlighted_row-1].artwork,
                 color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
+
+
+
+def print_race_selection_screen(console:Console, screen_width:int, screen_height:int, races:List[CharCreationRace], highlighted_row:int) -> None:
+    """
+    Prints the race selection screen using the different UI printing functions:\n
+    - `print_races()` - Prints the list of available races\n
+    - `print_info()` - Prints the info-box related to the highlighted race\n
+    - `print_feats()` - Prints the racial feats related to the highlighted race\n
+    - `print_symbol()` - Prints the highlighted race symbol-box\n
+    - `print_artwork()` - Prints an ASCII artwork related to the highlighted race\n
+    """
+
+    print_races(console, screen_width, screen_height, races, highlighted_row)
+    print_info(console, screen_width, screen_height, races, highlighted_row)
+    print_feats(console, screen_width, screen_height, races, highlighted_row)
+    print_symbol(console, screen_width, screen_height, races, highlighted_row)
+    print_artwork(console, screen_width, screen_height, races, highlighted_row)
+
+
+
+#def switch_next_screen() -> str:
+#    """Changes the screen to the next one ("Biography" screen).\n
+#    Returns a string (`str`): `"BIO_SCREEN"`."""
+#    return "BIO_SCREEN"

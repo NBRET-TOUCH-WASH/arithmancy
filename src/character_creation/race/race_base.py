@@ -21,9 +21,15 @@ class CharCreationRace:
 
         self.artwork:str
 
+
+    def __repr__(self) -> str:
+        return f"{self.name} race"
+
+
     def handle_no_feats(self):
         if self.racial_feats == []:
             self.racial_feats = [NoRacialFeat()]
+
 
     def get_number_of_artwork_lines(self):
         return len(self.artwork.splitlines())
