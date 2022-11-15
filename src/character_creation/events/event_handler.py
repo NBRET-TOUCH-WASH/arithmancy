@@ -10,11 +10,27 @@ import tcod
 
 from .event_types import *
 
+#text input
+#TODO: make this work later, for now we'll use a randomly-selected name
+#class TextInputHandler(tcod.event.EventDispatch):
+#    #alphabet = {
+#    #    tcod.event.K_a:'a',
+#    #    tcod.event.K_b:'b',
+#    #    tcod.event.K_c:'c',
+#    #}
 
 
-#classes
-class Action:
-    pass
+#    def ev_quit(self, event: tcod.event.Quit) -> Optional[Action]:
+#        pass
+
+#    def ev_keydown(self, event: tcod.event.KeyDown) -> Optional[Action]:
+#        action:Optional[Action] = None
+#        key = event.sym
+
+#        if key == tcod.event.K_UP:
+#            pass
+
+#        return action
 
 
 #character creation
