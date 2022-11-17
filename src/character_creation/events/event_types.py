@@ -31,3 +31,8 @@ class Submit(Action):
     """Represents the user selecting a certain option, entering a string, etc."""
     def __init__(self) -> None:
         return None
+
+class Pass(Action):
+    """Represents the user advancing prompts."""
+    def __init__(self) -> None:
+        return None

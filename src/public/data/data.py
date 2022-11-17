@@ -12,8 +12,8 @@ import json
 player_data = {
     "race":"sampleTxt",
     "bio":{
-        "name":"sampleTxt",
-        "gender":"sampleTxt"
+        "name":"sampleTxt"
+        #"gender":"sampleTxt"
     },
     "class":"sampleTxt",
     "traits":{

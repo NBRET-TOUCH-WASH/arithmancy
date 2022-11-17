@@ -28,13 +28,13 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
         if CHAR_CURRENT_SCREEN == "RACE_SCREEN":
             race_ui.print_race_selection_screen(console, screen_width, screen_height, race_ui.available_races, race_ui.highlighted_row)
+
         elif CHAR_CURRENT_SCREEN == "BIO_SCREEN":
             #TODO: make this cleaner with the use of text input
             if bio_ui.IS_NAME_SELECTED == False:
                 data.player_data["bio"]["name"] = bio_ui.get_random_name(names.player_names)
                 data.export_json_char(data.player_data)
                 bio_ui.IS_NAME_SELECTED = True
-
             bio_ui.print_bio_screen(console, screen_width, screen_height)
 
         context.present(console)
@@ -64,12 +64,15 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
                     data.player_data["race"] = race_ui.available_races[race_ui.highlighted_row-1].name
                     data.export_json_char(data.player_data)
                     CHAR_CURRENT_SCREEN = switch_screen(CHAR_CURRENT_SCREEN)
+                #if CHAR_CURRENT_SCREEN == "BIO_SCREEN":
+                #    #data.save_char_data(data.player_data, "gender", bio_ui.builtin_genders[(screen_width//5)//bio_ui.highlighted_gender_column])
+                #    #TOFIX: fix all this shit i can't figure it out might a well scrap the bio section for now
+                #    data.player_data["bio"]["gender"] = bio_ui.builtin_genders[(screen_width//5)*(bio_ui.highlighted_gender_column//5)]
+                #    data.export_json_char(data.player_data)
 
+            elif isinstance(action, Pass):
                 if CHAR_CURRENT_SCREEN == "BIO_SCREEN":
-                    #data.save_char_data(data.player_data, "gender", bio_ui.builtin_genders[(screen_width//5)//bio_ui.highlighted_gender_column])
-                    #TOFIX: fix all this shit i can't figure it out might a well scrap the bio section for now
-                    data.player_data["bio"]["gender"] = bio_ui.builtin_genders[(screen_width//5)*(bio_ui.highlighted_gender_column//5)]
-                    data.export_json_char(data.player_data)
+                    CHAR_CURRENT_SCREEN = switch_screen(CHAR_CURRENT_SCREEN)
 
             elif isinstance(current_event, event.Quit):
                 raise SystemExit()

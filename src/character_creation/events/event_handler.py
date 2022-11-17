@@ -54,5 +54,7 @@ class CharacterCreatorEventHandler(tcod.event.EventDispatch):
 
         elif key == tcod.event.K_RETURN:
             action = Submit()
+        elif key == tcod.event.K_SPACE:
+            action = Pass()
 
         return action
