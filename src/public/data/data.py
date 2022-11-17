@@ -37,7 +37,7 @@ def save_char_data(player_data:dict, field:str, value:Any=None) -> None:
 
     #if field in player_data and type(value) == type(player_data[field]):
     if field in player_data:
-        player_data[field] = value
+        player_data["bio"] = value
     else:
         raise KeyError()
 

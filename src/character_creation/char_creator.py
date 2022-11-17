@@ -52,12 +52,24 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
                 if CHAR_CURRENT_SCREEN == "RACE_SCREEN":
                     race_ui.highlighted_row += action.row_change
                     race_ui.highlighted_row = race_ui.clamp_highlighted_race(race_ui.highlighted_row, race_ui.available_races)
+            elif isinstance(action, OptionColumnChange):
+                if CHAR_CURRENT_SCREEN == "BIO_SCREEN":
+                    bio_ui.highlighted_gender_column += action.column_change
+                    bio_ui.highlighted_gender_column = bio_ui.clamp_highlighted_gender(screen_width, bio_ui.highlighted_gender_column, bio_ui.builtin_genders)
+                    #bio_ui.currently_highlighted_gender = bio_ui.builtin_genders[bio_ui.highlighted_gender_column//screen_width]
 
             elif isinstance(action, Submit):
                 if CHAR_CURRENT_SCREEN == "RACE_SCREEN":
-                    data.save_char_data(data.player_data, "race", race_ui.available_races[race_ui.highlighted_row-1].name)
+                    #data.save_char_data(data.player_data, "race", race_ui.available_races[race_ui.highlighted_row-1].name)
+                    data.player_data["race"] = race_ui.available_races[race_ui.highlighted_row-1].name
                     data.export_json_char(data.player_data)
                     CHAR_CURRENT_SCREEN = switch_screen(CHAR_CURRENT_SCREEN)
+
+                if CHAR_CURRENT_SCREEN == "BIO_SCREEN":
+                    #data.save_char_data(data.player_data, "gender", bio_ui.builtin_genders[(screen_width//5)//bio_ui.highlighted_gender_column])
+                    #TOFIX: fix all this shit i can't figure it out might a well scrap the bio section for now
+                    data.player_data["bio"]["gender"] = bio_ui.builtin_genders[(screen_width//5)*(bio_ui.highlighted_gender_column//5)]
+                    data.export_json_char(data.player_data)
 
             elif isinstance(current_event, event.Quit):
                 raise SystemExit()

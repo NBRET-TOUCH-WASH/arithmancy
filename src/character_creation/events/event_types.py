@@ -2,7 +2,8 @@
 
 #classes
 class Action:
-    pass
+    screen_width:int = 155
+    screen_height:int = 55
 
 
 
@@ -18,6 +19,11 @@ class OptionRowChange(Action):
     """Represents the user going up or down different rows of options."""
     def __init__(self, row_change:int) -> None:
         self.row_change:int = row_change
+
+class OptionColumnChange(Action):
+    """Represents the user going up or down different rows of options."""
+    def __init__(self, column_change:int) -> None:
+        self.column_change:int = column_change
 
 
 

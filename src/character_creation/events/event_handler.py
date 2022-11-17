@@ -47,6 +47,11 @@ class CharacterCreatorEventHandler(tcod.event.EventDispatch):
         elif key == tcod.event.K_DOWN:
             action = OptionRowChange(+1)
 
+        if key == tcod.event.K_LEFT:
+            action = OptionColumnChange(-(Action.screen_width//5))
+        if key == tcod.event.K_RIGHT:
+            action = OptionColumnChange(+(Action.screen_width//5))
+
         elif key == tcod.event.K_RETURN:
             action = Submit()
 
