@@ -1,7 +1,7 @@
 #coding:utf-8
 
 #type hinting
-from typing import List
+from typing import List, Dict
 from tcod import Console
 
 
@@ -22,7 +22,7 @@ cleric_class = Cleric()
 warrior_class = Warrior()
 
 
-#the different races showed up on screen
+#the different classes showed up on screen
 available_classes:List[CharCreationClass] = [
     mage_class,
     necromancer_class,
@@ -34,6 +34,10 @@ available_classes:List[CharCreationClass] = [
 
 #variables
 highlighted_row:int = 1
+
+attrib_mods:Dict[str, int] = {
+    "bruh":0
+}
 
 def clamp_highlighted_class(highlight:int, classes:List[CharCreationClass]) -> None:
     """Clamps the class highlight in the range of the available classes list.\n
