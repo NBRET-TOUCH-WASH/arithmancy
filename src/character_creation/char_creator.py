@@ -13,6 +13,7 @@ from .bio.player_names import names
 
 from .race import race_ui
 from .bio import bio_ui
+from .char_class import class_ui
 
 
 
@@ -22,6 +23,7 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
     char_creator_event_handler = CharacterCreatorEventHandler()
     CHAR_CURRENT_SCREEN:str = "RACE_SCREEN"
+    player_symbol:str = "SAMPLE_TEXT"
 
     while True:
         console.clear()
@@ -36,6 +38,9 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
                 data.export_json_char(data.player_data)
                 bio_ui.IS_NAME_SELECTED = True
             bio_ui.print_bio_screen(console, screen_width, screen_height)
+
+        elif CHAR_CURRENT_SCREEN == "CLASS_SCREEN":
+            class_ui.print_class_selection_screen(console, screen_width, screen_height, class_ui.available_classes, class_ui.highlighted_row, player_symbol)
 
         context.present(console)
 
@@ -52,6 +57,9 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
                 if CHAR_CURRENT_SCREEN == "RACE_SCREEN":
                     race_ui.highlighted_row += action.row_change
                     race_ui.highlighted_row = race_ui.clamp_highlighted_race(race_ui.highlighted_row, race_ui.available_races)
+                elif CHAR_CURRENT_SCREEN == "CLASS_SCREEN":
+                    class_ui.highlighted_row += action.row_change
+                    class_ui.highlighted_row = class_ui.clamp_highlighted_class(class_ui.highlighted_row, class_ui.available_classes)
             elif isinstance(action, OptionColumnChange):
                 if CHAR_CURRENT_SCREEN == "BIO_SCREEN":
                     bio_ui.highlighted_gender_column += action.column_change
@@ -61,6 +69,7 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
             elif isinstance(action, Submit):
                 if CHAR_CURRENT_SCREEN == "RACE_SCREEN":
                     #data.save_char_data(data.player_data, "race", race_ui.available_races[race_ui.highlighted_row-1].name)
+                    player_symbol = race_ui.available_races[race_ui.highlighted_row-1].symbol
                     data.player_data["race"] = race_ui.available_races[race_ui.highlighted_row-1].name
                     data.export_json_char(data.player_data)
                     CHAR_CURRENT_SCREEN = switch_screen(CHAR_CURRENT_SCREEN)

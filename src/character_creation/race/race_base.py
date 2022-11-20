@@ -31,5 +31,5 @@ class CharCreationRace:
             self.racial_feats = [NoRacialFeat()]
 
 
-    def get_number_of_artwork_lines(self):
-        return len(self.artwork.splitlines())
+    #def get_number_of_artwork_lines(self):
+    #    return len(self.artwork.splitlines())
