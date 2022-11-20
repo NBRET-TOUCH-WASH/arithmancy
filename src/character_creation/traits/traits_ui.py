@@ -109,7 +109,14 @@ def print_attributes(console:Console, screen_width:int, screen_height:int, attri
             if ATTRIB_IS_BUFF:
                 console.print(screen_third*2, 10+printed_row, "+{}".format(str(attrib_list[a].value)), color_tokens.GREEN.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
             elif ATTRIB_IS_NEUTRAL:
-                console.print(screen_third*2, 10+printed_row, str(attrib_list[a].value), color_tokens.ASH.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+                console.print(screen_third*2, 10+printed_row, str(attrib_list[a].value), color_tokens.YELLOW.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+
+            if MOD_IS_BUFF:
+                console.print(screen_third*2+4, 10+printed_row, "+ {}".format(str(abs(player_mods[a]))), color_tokens.GREEN.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+            elif MOD_IS_NEUTRAL:
+                console.print(screen_third*2+4, 10+printed_row, "± {}".format(str(abs(player_mods[a]))), color_tokens.ASH.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+            elif MOD_IS_DEBUFF:
+                console.print(screen_third*2+4, 10+printed_row, "- {}".format(str(abs(player_mods[a]))), color_tokens.RED.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
             #elif ATTRIB_IS_DEBUFF:
             #    console.print(screen_third*2, 10+printed_row, str(attrib_list[a].value), color_tokens.RED.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
 
@@ -124,6 +131,13 @@ def print_attributes(console:Console, screen_width:int, screen_height:int, attri
                 console.print(screen_third*2, 10+printed_row, str(attrib_list[a].value), color_tokens.TAUPE.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
             #elif ATTRIB_IS_DEBUFF:
             #    console.print(screen_third*2, 10+printed_row, str(attrib_list[a].value), color_tokens.MAROON.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+
+            if MOD_IS_BUFF:
+                console.print(screen_third*2+4, 10+printed_row, "+ {}".format(str(abs(player_mods[a]))), color_tokens.DARK_GREEN.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+            elif MOD_IS_NEUTRAL:
+                console.print(screen_third*2+4, 10+printed_row, "± {}".format(str(abs(player_mods[a]))), color_tokens.TAUPE_PURPLE.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+            elif MOD_IS_DEBUFF:
+                console.print(screen_third*2+4, 10+printed_row, "- {}".format(str(abs(player_mods[a]))), color_tokens.MAROON.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
         printed_row += 1
 
 
