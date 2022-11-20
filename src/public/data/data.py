@@ -24,7 +24,7 @@ player_data = {
         "STR":"sampleTxt",
         "WIS":"sampleTxt",
     },
-    "gift":"sampleTxt"
+    #"gift":"sampleTxt"
 }
 
 

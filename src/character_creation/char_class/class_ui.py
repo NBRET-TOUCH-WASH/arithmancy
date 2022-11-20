@@ -18,7 +18,7 @@ from .class_derived import *
 #classes/instances
 mage_class = Mage()
 necromancer_class = Necromancer()
-priest_class = Priest()
+cleric_class = Cleric()
 warrior_class = Warrior()
 
 
@@ -26,7 +26,7 @@ warrior_class = Warrior()
 available_classes:List[CharCreationClass] = [
     mage_class,
     necromancer_class,
-    priest_class,
+    cleric_class,
     warrior_class
 ]
 
@@ -91,18 +91,21 @@ def print_attributes_mods(console:Console, screen_width:int, screen_height:int, 
 
     console.print_frame(screen_width-76,15, 35,37, "Attributes modifiers")
 
-    mods_list:List[CharCreationClass] = classes[highlighted_row-1].attributes_modifiers
+    highlighted_class = classes[highlighted_row-1]
+    mods_list:List[CharCreationClass] = highlighted_class.attributes_modifiers
 
-    row = 17
+    row = 19
     for mod in mods_list:
         console.print(screen_width-74, row,
                             #33, 35,
-                            mod,
+                            mod[0],
                             color_tokens.WHITE.rgb)
-        lines = console.print_rect(screen_width-70, row + 1,
-                            27, 35,
-                            mods_list[mod])
-        row += 8
+        lines = console.print(screen_width-45, row,
+                            mod[1],
+                            highlighted_class.mod_types[mod[2]].rgb,
+                            color_tokens.BLACK.rgb)
+        row += 7
+        #row += 6
 
 
 

@@ -66,6 +66,7 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
                     bio_ui.highlighted_gender_column = bio_ui.clamp_highlighted_gender(screen_width, bio_ui.highlighted_gender_column, bio_ui.builtin_genders)
                     #bio_ui.currently_highlighted_gender = bio_ui.builtin_genders[bio_ui.highlighted_gender_column//screen_width]
 
+
             elif isinstance(action, Submit):
                 if CHAR_CURRENT_SCREEN == "RACE_SCREEN":
                     #data.save_char_data(data.player_data, "race", race_ui.available_races[race_ui.highlighted_row-1].name)
@@ -73,11 +74,18 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
                     data.player_data["race"] = race_ui.available_races[race_ui.highlighted_row-1].name
                     data.export_json_char(data.player_data)
                     CHAR_CURRENT_SCREEN = switch_screen(CHAR_CURRENT_SCREEN)
+
+                elif CHAR_CURRENT_SCREEN == "CLASS_SCREEN":
+                    data.player_data["class"] = class_ui.available_classes[class_ui.highlighted_row-1].name
+                    data.export_json_char(data.player_data)
+                    CHAR_CURRENT_SCREEN = switch_screen(CHAR_CURRENT_SCREEN)
+
                 #if CHAR_CURRENT_SCREEN == "BIO_SCREEN":
                 #    #data.save_char_data(data.player_data, "gender", bio_ui.builtin_genders[(screen_width//5)//bio_ui.highlighted_gender_column])
                 #    #TOFIX: fix all this shit i can't figure it out might a well scrap the bio section for now
                 #    data.player_data["bio"]["gender"] = bio_ui.builtin_genders[(screen_width//5)*(bio_ui.highlighted_gender_column//5)]
                 #    data.export_json_char(data.player_data)
+
 
             elif isinstance(action, Pass):
                 if CHAR_CURRENT_SCREEN == "BIO_SCREEN":

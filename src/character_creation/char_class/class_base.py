@@ -1,9 +1,9 @@
 #coding:utf-8
 
 #type hinting
-from typing import Dict, Tuple
+from typing import Dict, List, Tuple
 
-#from assets import color_tokens
+from assets import color_tokens
 
 
 
@@ -13,12 +13,18 @@ class CharCreationClass:
     Is not used in the main gameplay section.\n
     Serves as a base class for the other character creation segment classes."""
 
+    mod_types:Dict[str:color_tokens.Color, str:color_tokens.Color] = {
+        "BUFF":color_tokens.GREEN,
+        "NEUTRAL":color_tokens.CHARCOAL,
+        "DEBUFF":color_tokens.RED
+    }
+
     def __init__(self) -> None:
         self.name:str
 
         self.color:Tuple[int, int, int]
         self.info:str
-        self.attributes_modifiers:Dict[str:str]
+        self.attributes_modifiers:List[Tuple[str,str,str]]
 
         self.artwork:str
 
