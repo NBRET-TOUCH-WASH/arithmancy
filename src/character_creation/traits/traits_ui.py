@@ -3,7 +3,7 @@
 #type hinting
 from typing import List, Dict
 from tcod import Console
-from tcod.constants import *
+from tcod.constants import LEFT, CENTER, RIGHT
 
 
 
@@ -65,6 +65,8 @@ listed_attributes:List[Attribute] = [
     wis_attrib
 ]
 
+total_points:int = 20
+
 
 
 #variables
@@ -83,14 +85,61 @@ def clamp_attrib_highlight(attrib_highlight:int, attrib_list:List[Attribute]) ->
 
 
 #functions
+def increment_attribute_value(attributes_list:List[Attribute], highlighted_attrib:int) -> int:
+    """Increments an attribute's value according to a certain \"balance\" of points \
+    (i.e. incrementing 6 goes to 8, which then goes to 12 and gets capped).\n
+    Returns an integer (`int`)."""
+    value = attributes_list[highlighted_attrib-1].value
+    if value < 0:
+        return 0
+    elif 0 <= value < 6:
+        return 1
+    elif value == 6:
+        return 2
+    elif value == 8:
+        return 4
+    elif value >= 12:
+        return 0 #adds nothing zero to the value, effectively not adding anything
+    else:
+        raise ValueError()
+
+def decrement_attribute_value(attributes_list:List[Attribute], highlighted_attrib:int) -> int:
+    """Decrements an attribute's value according to a certain \"balance\" of points \
+    (i.e. decrementing 12 goes to 8, which then goes to 6 and then by steps of one until the 0 cap).\n
+    Returns an integer (`int`)."""
+    value = attributes_list[highlighted_attrib-1].value
+    if value == 0:
+        return 0 #substracts nothing zero to the value, effectively not adding anything
+    elif 0 < value <= 6:
+        return 1
+    elif value == 8:
+        return 2
+    elif value >= 12:
+        return 4
+    else:
+        raise ValueError()
+
 def clamp_attributes_value(attributes_list:List[Attribute], hihglighted_attrib:int) -> int:
     """Clamps the highlighted attribute's value. Currently only keeps the player from setting \
     a negative value to an attribute.\n
     Returns an integer (`int`)."""
     if attributes_list[hihglighted_attrib-1].value < 0:
         return 0
+    elif attributes_list[hihglighted_attrib-1].value >= 12:
+        return 12
     else:
         return attributes_list[hihglighted_attrib-1].value
+
+def change_total_points(value:int):
+    """Changes the amount of points left to spend after incrementing or decrementing an attribute's value.\n
+    Returns ??? (`???`)."""
+    #return available_points - value
+    #spent_points_sum:int = 0
+    #for a in range(len(attributes_list)):
+    #    spent_points_sum += attributes_list[a].value
+    #return available_points - spent_points_sum
+    return 20 - value
+
 
 def print_attributes(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int, player_mods:List[int]) -> None:
     """Prints the different available races to select as well as a small prompt.\n
@@ -174,23 +223,21 @@ def print_info(console:Console, screen_width:int, screen_height:int, attrib_list
 
 
 
-def print_artwork(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int):
-    """Prints an artwork box-frame as well as a small artwork representing to individuals of the highlighted race."""
+def print_points_left(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int, points_left:int):
+    """Prints the amount of points left to spend on attributes."""
 
-    console.print_frame(screen_width-38,3, 35,49)
-    console.print(screen_width-37, 4,
-                classes[highlighted_row-1].artwork,
-                color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
+    console.print(100,25, str(points_left), color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
 
 
 
-def print_traits_screen(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int, player_mods:List[int]) -> None:
+def print_traits_screen(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int, player_mods:List[int], points_left:int) -> None:
     """
     Prints the attributes tweaking screen using the different UI printing functions:\n
     - `...()` - ...\n
     """
 
     print_attributes(console, screen_width, screen_height, attrib_list, highlighted_row, player_mods)
+    print_points_left(console, screen_width, screen_height, attrib_list, highlighted_row, points_left)
 
 
 

@@ -1,4 +1,5 @@
 
 *.pyc
 src/public/elements/player/character_creation.json
+src/public/elements/player/player_attributes.json
 src/public/elements/player/attributes_modifiers.json

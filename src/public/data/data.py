@@ -28,6 +28,7 @@ player_data:dict = {
 }
 
 #values for the character attributes modifiers, in alphabetical order
+player_attributes:List[int] = [0, 0, 0, 0, 0]
 player_mods:List[int] = [0, 0, 0, 0, 0]
 
 
@@ -45,7 +46,7 @@ def save_char_data(player_data:dict, field:str, value:Any=None) -> None:
         raise KeyError()
 
 
-def export_json_char(created_player:dict, player_modifiers:list) -> None:
+def export_json_char(created_player:dict, player_attribs:list, player_modifiers:list) -> None:
     """
     Exports the saved character data to a json file.\n
     Returns nothing (`None`).
@@ -56,5 +57,7 @@ def export_json_char(created_player:dict, player_modifiers:list) -> None:
     #with open("character_creation.json", "w") as json_file:
         json.dump(created_player, json_file, indent=4)
 
+    with open("public/elements/player/player_attributes.json", "w") as json_file:
+        json.dump(player_attribs, json_file, indent=4)
     with open("public/elements/player/attributes_modifiers.json", "w") as json_file:
         json.dump(player_modifiers, json_file, indent=4)
