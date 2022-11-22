@@ -27,6 +27,20 @@ class OptionColumnChange(Action):
 
 
 
+class Increment(Action):
+    """Represents the user incrementing a value."""
+    def __init__(self) -> None:
+        #$ adding no instance attributes right now cuz it'll always just be a 1-unit step
+        pass
+
+class Decrement(Action):
+    """Represents the user decrementing a value."""
+    def __init__(self) -> None:
+        #$ adding no instance attributes right now cuz it'll always just be a 1-unit step
+        pass
+
+
+
 class Submit(Action):
     """Represents the user selecting a certain option, entering a string, etc."""
     def __init__(self) -> None:

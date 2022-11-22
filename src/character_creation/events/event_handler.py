@@ -42,19 +42,29 @@ class CharacterCreatorEventHandler(tcod.event.EventDispatch):
         action:Optional[Action] = None
         key = event.sym
 
+
         if key == tcod.event.K_UP:
             action = OptionRowChange(-1)
         elif key == tcod.event.K_DOWN:
             action = OptionRowChange(+1)
 
-        if key == tcod.event.K_LEFT:
+
+        elif key == tcod.event.K_LEFT:
             action = OptionColumnChange(-(Action.screen_width//5))
-        if key == tcod.event.K_RIGHT:
+        elif key == tcod.event.K_RIGHT:
             action = OptionColumnChange(+(Action.screen_width//5))
+
 
         elif key == tcod.event.K_RETURN:
             action = Submit()
         elif key == tcod.event.K_SPACE:
             action = Pass()
+
+
+        elif key == tcod.event.K_EQUALS or key == tcod.event.K_KP_PLUS:
+            action = Increment()
+        #! the `K_6` key is the '-' (minus) key
+        elif key == tcod.event.K_6 or key == tcod.event.K_KP_MINUS:
+            action = Decrement()
 
         return action

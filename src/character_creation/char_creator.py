@@ -66,12 +66,21 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
                     class_ui.highlighted_row = class_ui.clamp_highlighted_class(class_ui.highlighted_row, class_ui.available_classes)
                 elif CHAR_CURRENT_SCREEN == "TRAITS_SCREEN":
                     traits_ui.highlighted_row += action.row_change
-                    traits_ui.highlighted_row = traits_ui.clamp_highlighted_attrib(traits_ui.highlighted_row, traits_ui.listed_attributes)
+                    traits_ui.highlighted_row = traits_ui.clamp_attrib_highlight(traits_ui.highlighted_row, traits_ui.listed_attributes)
             elif isinstance(action, OptionColumnChange):
                 if CHAR_CURRENT_SCREEN == "BIO_SCREEN":
                     bio_ui.highlighted_gender_column += action.column_change
                     bio_ui.highlighted_gender_column = bio_ui.clamp_highlighted_gender(screen_width, bio_ui.highlighted_gender_column, bio_ui.builtin_genders)
                     #bio_ui.currently_highlighted_gender = bio_ui.builtin_genders[bio_ui.highlighted_gender_column//screen_width]
+
+
+            elif isinstance(action, Increment):
+                if CHAR_CURRENT_SCREEN == "TRAITS_SCREEN":
+                    traits_ui.listed_attributes[traits_ui.highlighted_row-1].value += 1
+            elif isinstance(action, Decrement):
+                if CHAR_CURRENT_SCREEN == "TRAITS_SCREEN":
+                    traits_ui.listed_attributes[traits_ui.highlighted_row-1].value -= 1
+                    traits_ui.listed_attributes[traits_ui.highlighted_row-1].value = traits_ui.clamp_attributes_value(traits_ui.listed_attributes, traits_ui.highlighted_row)
 
 
             elif isinstance(action, Submit):

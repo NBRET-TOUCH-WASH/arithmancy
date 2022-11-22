@@ -70,7 +70,7 @@ listed_attributes:List[Attribute] = [
 #variables
 highlighted_row:int = 1
 
-def clamp_highlighted_attrib(attrib_highlight:int, attrib_list:List[Attribute]) -> None:
+def clamp_attrib_highlight(attrib_highlight:int, attrib_list:List[Attribute]) -> None:
     """Clamps the attribute highlight in the range of the attributes list.\n
     Returns nothing (`None`)."""
     if attrib_highlight < 1:
@@ -83,6 +83,15 @@ def clamp_highlighted_attrib(attrib_highlight:int, attrib_list:List[Attribute]) 
 
 
 #functions
+def clamp_attributes_value(attributes_list:List[Attribute], hihglighted_attrib:int) -> int:
+    """Clamps the highlighted attribute's value. Currently only keeps the player from setting \
+    a negative value to an attribute.\n
+    Returns an integer (`int`)."""
+    if attributes_list[hihglighted_attrib-1].value < 0:
+        return 0
+    else:
+        return attributes_list[hihglighted_attrib-1].value
+
 def print_attributes(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int, player_mods:List[int]) -> None:
     """Prints the different available races to select as well as a small prompt.\n
     Returns nothing (`None`)."""
@@ -143,7 +152,7 @@ def print_attributes(console:Console, screen_width:int, screen_height:int, attri
 
     console.print(3,3, "Tweak your character's attributes to your liking:", color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
     console.print(screen_width//2,screen_height-7, "Press the [UP] and [DOWN] arrow keys to raise or lower the attribute highlight.", color_tokens.FERN_GREEN.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
-    console.print(screen_width//2,screen_height-6, "Press the [+] and [-] keys on your keypad to increment or decrement the highlighted attribute.", color_tokens.FERN_GREEN.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
+    console.print(screen_width//2,screen_height-6, "Press the [+] and [-] keys on your keyboard to increment or decrement the highlighted attribute.", color_tokens.FERN_GREEN.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
     console.print(screen_width//2,screen_height-4, "Press [ENTER] to submit your choices and finish character creation.", color_tokens.FERN_GREEN.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
 
 
