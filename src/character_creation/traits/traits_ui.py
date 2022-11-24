@@ -66,6 +66,7 @@ listed_attributes:List[Attribute] = [
 ]
 
 total_points:int = 20
+spent_points:int = 0
 
 
 
@@ -85,7 +86,7 @@ def clamp_attrib_highlight(attrib_highlight:int, attrib_list:List[Attribute]) ->
 
 
 #functions
-def increment_attribute_value(attributes_list:List[Attribute], highlighted_attrib:int) -> int:
+def increment_attribute_value(attributes_list:List[Attribute], highlighted_attrib:int, available_points:int) -> int:
     """Increments an attribute's value according to a certain \"balance\" of points \
     (i.e. incrementing 6 goes to 8, which then goes to 12 and gets capped).\n
     Returns an integer (`int`)."""
@@ -98,7 +99,7 @@ def increment_attribute_value(attributes_list:List[Attribute], highlighted_attri
         return 2
     elif value == 8:
         return 4
-    elif value >= 12:
+    elif value >= 12 or available_points < value:
         return 0 #adds nothing zero to the value, effectively not adding anything
     else:
         raise ValueError()
@@ -130,15 +131,58 @@ def clamp_attributes_value(attributes_list:List[Attribute], hihglighted_attrib:i
     else:
         return attributes_list[hihglighted_attrib-1].value
 
-def change_total_points(value:int):
+def change_total_points(attribute:int, switch:int) -> int:
     """Changes the amount of points left to spend after incrementing or decrementing an attribute's value.\n
-    Returns ??? (`???`)."""
+    `switch` is a flag only accepting `1` and `2` as values; respectively signaling addition or substraction.\n
+    Returns an integer (`int`)."""
     #return available_points - value
     #spent_points_sum:int = 0
     #for a in range(len(attributes_list)):
     #    spent_points_sum += attributes_list[a].value
     #return available_points - spent_points_sum
-    return 20 - value
+
+    if not (switch == 1 or switch == 2):
+        raise ValueError()
+
+    if 0 <= attribute <= 5:
+        print(1)
+        return 1
+
+    elif attribute == 6:
+        if switch == 1:
+            print(2)
+            return 2
+        elif switch == 2:
+            print(1)
+            return 1
+
+    elif attribute == 8:
+        if switch == 1:
+            print(4)
+            return 4
+        elif switch == 2:
+            print(2)
+            return 2
+
+    elif attribute == 12:
+        if switch == 1:
+            print(4)
+            return 4
+        elif switch == 2:
+            print(4)
+            return 4
+
+    else:
+        print(0)
+        return 0
+
+def clamp_total_points(total_points:int):
+    if total_points < 0:
+        return 0
+    elif total_points > 20:
+        return 20
+    else:
+        return total_points
 
 
 def print_attributes(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int, player_mods:List[int]) -> None:
@@ -206,27 +250,30 @@ def print_attributes(console:Console, screen_width:int, screen_height:int, attri
 
 
 
-def print_info(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int):
-    """Prints an info box-frame as well as a relatively short description of the highlighted race."""
+#def print_info(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int):
+#    """Prints an info box-frame as well as a relatively short description of the highlighted race."""
 
-    console.print_frame(screen_width-113,15,
-                        35,37,
-                        "Info")
+#    console.print_frame(screen_width-113,15,
+#                        35,37,
+#                        "Info")
 
-    #console.print(screen_width-112,16,
-    #            races[highlighted_row].info,
-    #            color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
-    console.print_rect(screen_width-111+31//2, 17,
-                        31,36,
-                        classes[highlighted_row-1].info,
-                        alignment=2)
+#    #console.print(screen_width-112,16,
+#    #            races[highlighted_row].info,
+#    #            color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
+#    console.print_rect(screen_width-111+31//2, 17,
+#                        31,36,
+#                        classes[highlighted_row-1].info,
+#                        alignment=2)
 
 
 
 def print_points_left(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int, points_left:int):
     """Prints the amount of points left to spend on attributes."""
 
+    #TODO:
+
     console.print(100,25, str(points_left), color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
+    console.print(100,26, "TODO:\nMAKE THIS PRETTIER", color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
 
 
 

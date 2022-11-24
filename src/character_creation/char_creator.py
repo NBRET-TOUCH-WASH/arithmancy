@@ -1,5 +1,16 @@
 #coding:utf-8
 
+"""
+¤ ============================================================================================= ¤
+/                                                                                               /
+/      the operation below is kept because of its historical significance in this project.      /
+/                                     do not ask questions.                                     /
+/                                                                                               /
+¤ ============================================================================================= ¤
+
+                                    #traits_ui.total_points += 1
+"""
+
 #modules
 from tcod import *
 
@@ -76,15 +87,31 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
             elif isinstance(action, Increment):
                 if CHAR_CURRENT_SCREEN == "TRAITS_SCREEN":
-                    traits_ui.listed_attributes[traits_ui.highlighted_row-1].value += traits_ui.increment_attribute_value(traits_ui.listed_attributes, traits_ui.highlighted_row)
-                    traits_ui.listed_attributes[traits_ui.highlighted_row-1].value = traits_ui.clamp_attributes_value(traits_ui.listed_attributes, traits_ui.highlighted_row)
+                    """
+                    #$ 2022-11-24 ; 13:55 : thx Étienne :)
+                        traits_ui.listed_attributes[traits_ui.highlighted_row-1].value += traits_ui.increment_attribute_value(traits_ui.listed_attributes, traits_ui.highlighted_row)
+                        
+                        if 0 <= traits_ui.listed_attributes[traits_ui.highlighted_row-1].value <= 12:
+                            #traits_ui.total_points -= 1
+                            traits_ui.total_points -= traits_ui.change_total_points(traits_ui.listed_attributes[traits_ui.highlighted_row-1].value, 2)
+                    """
+
+                    #traits_ui.listed_attributes[traits_ui.highlighted_row-1].value = traits_ui.clamp_attributes_value(traits_ui.listed_attributes, traits_ui.highlighted_row)
                     #traits_ui.total_points -= traits_ui.change_total_points(traits_ui.total_points, traits_ui.listed_attributes[traits_ui.highlighted_row-1].value)
-                    traits_ui.total_points -= traits_ui.change_total_points(traits_ui.listed_attributes[traits_ui.highlighted_row-1].value)
+                    #if 0 < traits_ui.listed_attributes[traits_ui.highlighted_row-1].value <= 12:
+
+                    increment_value:int = traits_ui.increment_attribute_value(traits_ui.listed_attributes, traits_ui.highlighted_row, traits_ui.total_points)
+                    if 0 <= traits_ui.listed_attributes[traits_ui.highlighted_row-1].value < 12:
+                        if increment_value <= traits_ui.total_points:
+                            traits_ui.listed_attributes[traits_ui.highlighted_row-1].value += increment_value
+                            traits_ui.total_points -= traits_ui.change_total_points(traits_ui.listed_attributes[traits_ui.highlighted_row-1].value, 2)
+
+
             elif isinstance(action, Decrement):
                 if CHAR_CURRENT_SCREEN == "TRAITS_SCREEN":
-                    traits_ui.listed_attributes[traits_ui.highlighted_row-1].value -= traits_ui.decrement_attribute_value(traits_ui.listed_attributes, traits_ui.highlighted_row)
-                    traits_ui.listed_attributes[traits_ui.highlighted_row-1].value = traits_ui.clamp_attributes_value(traits_ui.listed_attributes, traits_ui.highlighted_row)
-                    #traits_ui.total_points += traits_ui.change_total_points(traits_ui.total_points, traits_ui.listed_attributes[traits_ui.highlighted_row].value)
+                    if 12 >= traits_ui.listed_attributes[traits_ui.highlighted_row-1].value > 0:
+                        traits_ui.listed_attributes[traits_ui.highlighted_row-1].value -= traits_ui.decrement_attribute_value(traits_ui.listed_attributes, traits_ui.highlighted_row)
+                        traits_ui.total_points += traits_ui.change_total_points(traits_ui.listed_attributes[traits_ui.highlighted_row-1].value, 1)
 
 
             elif isinstance(action, Submit):
