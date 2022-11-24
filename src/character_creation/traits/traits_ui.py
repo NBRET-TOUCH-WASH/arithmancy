@@ -9,7 +9,7 @@ from tcod.constants import LEFT, CENTER, RIGHT
 
 
 #modules
-from public.data.data import player_mods
+from public.data.data import player_data, player_mods
 from assets import color_tokens
 
 
@@ -18,6 +18,7 @@ from assets import color_tokens
 class Attribute:
     """Represents a character attribute during the character creation segment."""
     def __init__(self) -> None:
+        self.name:str = "Attribute"
         self.symbol:str = "SYM"
         self.value:int = 0
         self.description:str = "SAMPLE_TXT"
@@ -25,30 +26,35 @@ class Attribute:
 class Constitution(Attribute):
     def __init__(self) -> None:
         super().__init__()
+        self.name:str = "Constitution"
         self.symbol = "CON"
         self.description = "The character's ability to resist and recover from damage received."
 
 class Dexterity(Attribute):
     def __init__(self) -> None:
         super().__init__()
+        self.name:str = "Dexterity"
         self.symbol = "DEX"
         self.description = "Combination of the character's agility and quickness."
 
 class Intelligence(Attribute):
     def __init__(self) -> None:
         super().__init__()
+        self.name:str = "Intelligence"
         self.symbol = "INT"
         self.description = "Spellcasting abilities of spellcasters from the arcane and shadow realms."
 
 class Strength(Attribute):
     def __init__(self) -> None:
         super().__init__()
+        self.name:str = "Strength"
         self.symbol = "STR"
         self.description = "Character's aw physical strength."
 
 class Wisdom(Attribute):
     def __init__(self) -> None:
         super().__init__()
+        self.name:str = "Wisdom"
         self.symbol = "WIS"
         self.description = "Ability of a cleric to use prayers, verses, just like intelligence affects spellcasting."
 
@@ -145,35 +151,27 @@ def change_total_points(attribute:int, switch:int) -> int:
         raise ValueError()
 
     if 0 <= attribute <= 5:
-        print(1)
         return 1
 
     elif attribute == 6:
         if switch == 1:
-            print(2)
             return 2
         elif switch == 2:
-            print(1)
             return 1
 
     elif attribute == 8:
         if switch == 1:
-            print(4)
             return 4
         elif switch == 2:
-            print(2)
             return 2
 
     elif attribute == 12:
         if switch == 1:
-            print(4)
             return 4
         elif switch == 2:
-            print(4)
             return 4
 
     else:
-        print(0)
         return 0
 
 def clamp_total_points(total_points:int):
@@ -208,8 +206,9 @@ def print_attributes(console:Console, screen_width:int, screen_height:int, attri
                         "=",
                         color_tokens.WHITE.rgb, color_tokens.BLACK.rgb,
                         alignment=CENTER)
+            console.print(screen_third*2-2, 10+printed_row, "10 + ".format(str(attrib_list[a].value)), color_tokens.ASH.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
             if ATTRIB_IS_BUFF:
-                console.print(screen_third*2, 10+printed_row, "+{}".format(str(attrib_list[a].value)), color_tokens.GREEN.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+                console.print(screen_third*2, 10+printed_row, "{}".format(str(attrib_list[a].value)), color_tokens.GREEN.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
             elif ATTRIB_IS_NEUTRAL:
                 console.print(screen_third*2, 10+printed_row, str(attrib_list[a].value), color_tokens.YELLOW.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
 
@@ -227,8 +226,9 @@ def print_attributes(console:Console, screen_width:int, screen_height:int, attri
                         attrib_list[a].symbol,
                         color_tokens.CHARCOAL.rgb, color_tokens.BLACK.rgb)
             console.print(screen_width//2,10+printed_row, "=", color_tokens.CHARCOAL.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
+            console.print(screen_third*2-2, 10+printed_row, "10 + ", color_tokens.TAUPE_PURPLE.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
             if ATTRIB_IS_BUFF:
-                console.print(screen_third*2, 10+printed_row, "+{}".format(str(attrib_list[a].value)), color_tokens.DARK_GREEN.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
+                console.print(screen_third*2, 10+printed_row, "{}".format(str(attrib_list[a].value)), color_tokens.DARK_GREEN.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
             elif ATTRIB_IS_NEUTRAL:
                 console.print(screen_third*2, 10+printed_row, str(attrib_list[a].value), color_tokens.TAUPE.rgb, color_tokens.BLACK.rgb, alignment=RIGHT)
             #elif ATTRIB_IS_DEBUFF:
@@ -270,10 +270,10 @@ def print_attributes(console:Console, screen_width:int, screen_height:int, attri
 def print_points_left(console:Console, screen_width:int, screen_height:int, attrib_list:List[Attribute], highlighted_row:int, points_left:int):
     """Prints the amount of points left to spend on attributes."""
 
-    #TODO:
-
-    console.print(100,25, str(points_left), color_tokens.WHITE.rgb, color_tokens.BLACK.rgb)
-    console.print(100,26, "TODO:\nMAKE THIS PRETTIER", color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
+    console.draw_frame(screen_width-36,screen_height//2-10, 31,20, decoration="╔═╗║ ║╚═╝")
+    console.print(screen_width-36+30//2, screen_height//2-8, "Points left to spend:", color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
+    console.print(screen_width-36+32//2, screen_height//2-5, str(points_left), color_tokens.GOLDEN_YELLOW.rgb, color_tokens.BLACK.rgb, alignment=CENTER)
+    console.print_rect(screen_width-36+30//2, screen_height//2+5, 29,5, "Points can be spent to increment or decrement your character's attributes.", alignment=CENTER)
 
 
 

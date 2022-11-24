@@ -17,18 +17,18 @@ player_data:dict = {
     },
     "class":"sampleTxt",
     "traits":{
-        "CON":"sampleTxt",
-        "DEX":"sampleTxt",
-        "INT":"sampleTxt",
-        "SPD":"sampleTxt",
-        "STR":"sampleTxt",
-        "WIS":"sampleTxt",
+        "CON":10,
+        "DEX":10,
+        "INT":10,
+        #"SPD":"sampleTxt",
+        "STR":10,
+        "WIS":10,
     },
     #"gift":"sampleTxt"
 }
 
 #values for the character attributes modifiers, in alphabetical order
-player_attributes:List[int] = [0, 0, 0, 0, 0]
+player_attributes:List[int] = [10, 10, 10, 10, 10]
 player_mods:List[int] = [0, 0, 0, 0, 0]
 
 
@@ -46,18 +46,49 @@ def save_char_data(player_data:dict, field:str, value:Any=None) -> None:
         raise KeyError()
 
 
-def export_json_char(created_player:dict, player_attribs:list, player_modifiers:list) -> None:
+#def export_json_char(created_player:dict) -> None:
+#    """
+#    Exports the saved character data to a json file.\n
+#    Returns nothing (`None`).
+#    """
+#    #player_json = json.loads(player_data)
+
+def export_player_attributes(player_attribs:list):
     """
     Exports the saved character data to a json file.\n
     Returns nothing (`None`).
     """
-    #player_json = json.loads(player_data)
-
-    with open("public/elements/player/character_creation.json", "w") as json_file:
-    #with open("character_creation.json", "w") as json_file:
-        json.dump(created_player, json_file, indent=4)
-
     with open("public/elements/player/player_attributes.json", "w") as json_file:
         json.dump(player_attribs, json_file, indent=4)
+
+def export_player_mods(player_modifiers:list):
+    """
+    Exports the saved character data to a json file.\n
+    Returns nothing (`None`).
+    """
     with open("public/elements/player/attributes_modifiers.json", "w") as json_file:
         json.dump(player_modifiers, json_file, indent=4)
+
+
+def beget_player(player_dict:dict):
+    f = open("public/elements/player/player_attributes.json", 'r')
+    player_attributes = json.load(f)
+
+    #shitty name but whatev
+    player_final_dict:dict = {
+    "race":player_dict["race"],
+    "bio":{
+        "name":player_dict["bio"]["name"]
+    },
+    "class":player_dict["class"],
+    "traits":{
+        "CON":player_attributes[0],
+        "DEX":player_attributes[1],
+        "INT":player_attributes[2],
+        "STR":player_attributes[3],
+        "WIS":player_attributes[4],
+    },
+}
+
+    with open("public/elements/player/player.json", "w") as json_file:
+        json.dump(player_final_dict, json_file, indent=4)

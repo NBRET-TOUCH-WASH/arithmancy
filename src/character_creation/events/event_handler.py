@@ -55,7 +55,7 @@ class CharacterCreatorEventHandler(tcod.event.EventDispatch):
             action = OptionColumnChange(+(Action.screen_width//5))
 
 
-        elif key == tcod.event.K_RETURN:
+        elif key == tcod.event.K_RETURN or key == tcod.event.K_KP_ENTER:
             action = Submit()
         elif key == tcod.event.K_SPACE:
             action = Pass()

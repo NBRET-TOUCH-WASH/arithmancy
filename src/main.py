@@ -24,8 +24,9 @@ from assets import color_tokens
 
 from main_menu import *
 
-
 from character_creation import *
+
+from gameplay.main_gameplay import *
 
 #modules init
 
@@ -71,6 +72,7 @@ def main():
                                             color_tokens.WHITE.rgb, color_tokens.BLACK.rgb,
                                             color_tokens.VIOLET.rgb, color_tokens.AQUA.rgb, color_tokens.CRIMSON.rgb)
                 MAIN_MENU_OPTIONS.print_options(MAIN_CONSOLE, SCREEN_WIDTH,SCREEN_HEIGHT, MAIN_MENU_OPTIONS_SELECTED_ROW)
+
                 if launch_settings.DEBUG:#? has no real use right now but probably will in the future
                     MAIN_CONSOLE.print(SCREEN_WIDTH-20,SCREEN_HEIGHT-4,"☼ DEBUG MODE ☼", color_tokens.FUSCHIA.rgb)
 
@@ -81,6 +83,9 @@ def main():
             elif CURRENT_SCREEN == "OPTIONS_SCREEN":
                 print_options_screen(MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT,
                                                 color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, color_tokens.CHARTREUSE.rgb)
+
+            if CURRENT_SCREEN == "START_GAMEPLAY":
+                main_gameplay(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
 
             #Displays changes; is required to see any new stuff.
             MAIN_CONTEXT.present(MAIN_CONSOLE)
@@ -102,8 +107,9 @@ def main():
                     raise SystemExit()
 
                 elif CURRENT_SCREEN == "INIT_GAME":
-                    main_char_creation(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
-                    #char_creator.main_char_creation(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
+                    char_creator.main_char_creation(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
+                    CURRENT_SCREEN = char_creator.end_character_creation()
+                    break #dunno why this works but okay
 
 
                 if action is None:
