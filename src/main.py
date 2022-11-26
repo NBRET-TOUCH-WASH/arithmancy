@@ -20,10 +20,13 @@ from tcod import *
 import private.launch_settings as launch_settings
 import assets.meta.metadata as metadata
 from assets import color_tokens
-import main_menu
 
-from events.event_handler import MainMenuEventHandler, OptionsScreenEventHandler, AboutScreenEventHandler
-from events.event_types import MainMenuOptionAction, MainMenuOptionSelection, OptionsScreenGoBack, AboutScreenGoBack
+
+from main_menu import *
+
+from character_creation import *
+
+from gameplay.main_gameplay import *
 
 #modules init
 
@@ -38,7 +41,9 @@ SCREEN_TILESET = tileset.load_tilesheet(R".\assets\tiles\curses_640x300.png", 16
 
 MAIN_CONSOLE = Console(SCREEN_WIDTH, SCREEN_HEIGHT, 'F')
 
-MAIN_MENU_OPTIONS = main_menu.Options(MAIN_CONSOLE)
+MAIN_MENU_OPTIONS = Options(MAIN_CONSOLE)
+
+
 
 #functions
 def main():
@@ -52,29 +57,35 @@ def main():
     options_screen_event_handler = OptionsScreenEventHandler()
     about_screen_event_handler = AboutScreenEventHandler()
 
+    char_creator_event_handler = CharacterCreatorEventHandler()
 
-    with context.new(columns=MAIN_CONSOLE.width, rows=MAIN_CONSOLE.height, tileset=SCREEN_TILESET, title="Arithmancy") as MAIN_CONTEXT:
+
+    with context.new(columns=MAIN_CONSOLE.width, rows=MAIN_CONSOLE.height, tileset=SCREEN_TILESET, title=f"Arithmancy {metadata.VERSION_TAG}") as MAIN_CONTEXT:
         MAIN_MENU_OPTIONS_SELECTED_ROW = 1
         CURRENT_SCREEN = "MAIN_MENU"
         while True:
             MAIN_CONSOLE.clear()
 
             if CURRENT_SCREEN == "MAIN_MENU":
-                main_menu.print_main_menu(MAIN_CONSOLE, SCREEN_WIDTH,SCREEN_HEIGHT,
+                print_main_menu(MAIN_CONSOLE, SCREEN_WIDTH,SCREEN_HEIGHT,
                                             metadata.AUTHOR, metadata.DATE, metadata.LICENSE, metadata.VERSION_TAG,
                                             color_tokens.WHITE.rgb, color_tokens.BLACK.rgb,
                                             color_tokens.VIOLET.rgb, color_tokens.AQUA.rgb, color_tokens.CRIMSON.rgb)
                 MAIN_MENU_OPTIONS.print_options(MAIN_CONSOLE, SCREEN_WIDTH,SCREEN_HEIGHT, MAIN_MENU_OPTIONS_SELECTED_ROW)
+
                 if launch_settings.DEBUG:#? has no real use right now but probably will in the future
                     MAIN_CONSOLE.print(SCREEN_WIDTH-20,SCREEN_HEIGHT-4,"☼ DEBUG MODE ☼", color_tokens.FUSCHIA.rgb)
 
             elif CURRENT_SCREEN == "ABOUT_SCREEN":
-                main_menu.print_about_screen(MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT,
+                print_about_screen(MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT,
                                                 color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, color_tokens.CHARTREUSE.rgb)
 
             elif CURRENT_SCREEN == "OPTIONS_SCREEN":
-                main_menu.print_options_screen(MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT,
+                print_options_screen(MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT,
                                                 color_tokens.WHITE.rgb, color_tokens.BLACK.rgb, color_tokens.CHARTREUSE.rgb)
+
+            if CURRENT_SCREEN == "START_GAMEPLAY":
+                main_gameplay(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
 
             #Displays changes; is required to see any new stuff.
             MAIN_CONTEXT.present(MAIN_CONSOLE)
@@ -95,6 +106,11 @@ def main():
                 elif CURRENT_SCREEN == "EXIT_GAME":
                     raise SystemExit()
 
+                elif CURRENT_SCREEN == "INIT_GAME":
+                    char_creator.main_char_creation(MAIN_CONTEXT, MAIN_CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
+                    CURRENT_SCREEN = char_creator.end_character_creation()
+                    break #dunno why this works but okay
+
 
                 if action is None:
                     continue
@@ -107,7 +123,7 @@ def main():
                         MAIN_MENU_OPTIONS_SELECTED_ROW = 1
 
                 elif isinstance(action, MainMenuOptionSelection):
-                    CURRENT_SCREEN = main_menu.change_screen(MAIN_MENU_OPTIONS_SELECTED_ROW)
+                    CURRENT_SCREEN = change_screen(MAIN_MENU_OPTIONS_SELECTED_ROW)
                 elif isinstance(action, OptionsScreenGoBack):
                     CURRENT_SCREEN = "MAIN_MENU"
                 elif isinstance(action, AboutScreenGoBack):

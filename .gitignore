@@ -1,2 +1,11 @@
-
+#Python
+#Python cache files
 *.pyc
+
+
+
+#Player data (exported to `.json`)
+src/public/elements/player/character_creation.json
+src/public/elements/player/player_attributes.json
+src/public/elements/player/attributes_modifiers.json
+src/public/elements/player/player.json

@@ -15,13 +15,13 @@ from .LCYAN import *
 from .DGRAY import *
 from .LGRAY import *
 
-from .GREEN import *
+from .DGREEN import *
 from .LGREEN import *
 
 from .MAGENTA import *
 from .LMAGENTA import *
 
-from .RED import *
+from .DRED import *
 from .LRED import *
 
 from .WHITE import *
