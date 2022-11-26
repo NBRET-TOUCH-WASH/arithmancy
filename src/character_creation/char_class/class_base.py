@@ -13,7 +13,7 @@ class CharCreationClass:
     Is not used in the main gameplay section.\n
     Serves as a base class for the other character creation segment classes."""
 
-    mod_types:Dict[str:color_tokens.Color, str:color_tokens.Color] = {
+    mod_types:Dict[str, color_tokens.Color] = {
         "BUFF":color_tokens.GREEN,
         "NEUTRAL":color_tokens.CHARCOAL,
         "DEBUFF":color_tokens.RED
