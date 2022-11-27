@@ -14,12 +14,14 @@
 #modules
 from tcod import *
 
+from public import data
+import private.cli_args.arg_parsing as arg_parsing
+
 from .events import *
 
 from assets import color_tokens
 
 from .screens import *
-from public import data
 from .bio.player_names import names
 
 from .race import race_ui
@@ -44,6 +46,32 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
     CHAR_CURRENT_SCREEN:str = "RACE_SCREEN"
     player_symbol:str = "SAMPLE_TEXT"
 
+    #making this if section to leave room for other potential debug tests
+    if arg_parsing.DEBUG_ENABLED:
+        try:
+            if arg_parsing.cli_args.load:
+                print("CHARACTER CREATION: Loading character file...")
+                try:
+                    data.load_char_data(arg_parsing.cli_args.load)
+                    print("CHARACTER CREATION: Character file loaded successfully!")
+                    return 2
+                except:
+                    print("CHARACTER CREATION: Invalid character file. Beginning regular character creation...")
+        except AttributeError:
+            print("CHARACTER CREATION: No character file loaded.")
+
+        try:
+            if arg_parsing.cli_args.create:
+                print("CHARACTER CREATION: Creating character file...")
+                try:
+                    data.create_char_data(arg_parsing.cli_args.create)
+                    print("CHARACTER CREATION: Character file created successfully!")
+                    return 2
+                except:
+                    print("CHARACTER CREATION: Invalid character creation data. Beginning regular character creation...")
+        except AttributeError:
+            print("CHARACTER CREATION: No character file created.")
+
     while True:
         console.clear()
 
@@ -52,6 +80,7 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
         elif CHAR_CURRENT_SCREEN == "BIO_SCREEN":
             #TODO: make this cleaner with the use of text input
+                #$ one day hopefully :^)
             if bio_ui.IS_NAME_SELECTED == False:
                 data.player_data["bio"]["name"] = bio_ui.get_random_name(names.player_names)
                 data.export_player_attributes(data.player_attributes)
@@ -69,8 +98,14 @@ def main_char_creation(context:context.Context, console:Console, screen_width:in
 
 
         for current_event in event.wait():
+            #TODO: refactor when splitting CLI args parsing to modules
+            try:
+                if arg_parsing.cli_args.verbose:
+                    print(current_event)
+            except AttributeError:
+                pass
+
             context.convert_event(current_event)
-            print(current_event)
             action = char_creator_event_handler.dispatch(current_event)
 
             if action is None:

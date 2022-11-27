@@ -15,6 +15,10 @@ notes
 #modules
 from tcod import *
 
+import private.cli_args.arg_parsing as arg_parsing
+
+import assets.color_tokens as color_tokens
+
 #modules init
 
 
@@ -32,6 +36,7 @@ def main_gameplay(main_context:context.Context, main_console:Console, screen_wid
         # ===================== #
         # Printing goes here...
         # ===================== #
+        main_console.print(0,0,"bruh‼", color_tokens.FUSCHIA.rgb, color_tokens.BLACK.rgb)
 
         #Displays changes; is required to see any new stuff.
         main_context.present(main_console)
@@ -39,8 +44,14 @@ def main_gameplay(main_context:context.Context, main_console:Console, screen_wid
 
         #event handling
         for current_event in event.wait():
+            #TODO: refactor when splitting CLI args parsing to modules
+            try:
+                if arg_parsing.cli_args.verbose:
+                    print(current_event)
+            except AttributeError:
+                pass
+
             main_context.convert_event(current_event)
-            print(current_event)
 
             if isinstance(current_event, event.Quit):
                 raise SystemExit()

@@ -17,7 +17,7 @@
 #modules
 from tcod import *
 
-import private.launch_settings as launch_settings
+import private.cli_args.arg_parsing as arg_parsing
 import assets.meta.metadata as metadata
 from assets import color_tokens
 
@@ -27,8 +27,6 @@ from main_menu import *
 from character_creation import *
 
 from gameplay.main_gameplay import *
-
-#modules init
 
 
 
@@ -52,6 +50,13 @@ def main():
     Returns nothing.
     """
 
+    try:
+        if arg_parsing.cli_args.tag:
+            print(metadata.VERSION_TAG)
+            return 2
+    except AttributeError:
+        pass
+
     #event handlers
     main_menu_event_handler = MainMenuEventHandler()
     options_screen_event_handler = OptionsScreenEventHandler()
@@ -73,7 +78,7 @@ def main():
                                             color_tokens.VIOLET.rgb, color_tokens.AQUA.rgb, color_tokens.CRIMSON.rgb)
                 MAIN_MENU_OPTIONS.print_options(MAIN_CONSOLE, SCREEN_WIDTH,SCREEN_HEIGHT, MAIN_MENU_OPTIONS_SELECTED_ROW)
 
-                if launch_settings.DEBUG:#? has no real use right now but probably will in the future
+                if arg_parsing.DEBUG_ENABLED == True:#? has no real use right now but probably will in the future
                     MAIN_CONSOLE.print(SCREEN_WIDTH-20,SCREEN_HEIGHT-4,"☼ DEBUG MODE ☼", color_tokens.FUSCHIA.rgb)
 
             elif CURRENT_SCREEN == "ABOUT_SCREEN":
@@ -94,7 +99,13 @@ def main():
             #event handling
             for current_event in event.wait():
                 MAIN_CONTEXT.convert_event(current_event)
-                print(current_event)
+
+                #TODO: refactor when splitting CLI args parsing to modules
+                try:
+                    if arg_parsing.cli_args.verbose:
+                        print(current_event)
+                except AttributeError:
+                    pass
 
                 #event dispatching
                 if CURRENT_SCREEN == "MAIN_MENU":

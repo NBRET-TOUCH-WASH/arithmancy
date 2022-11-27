@@ -1,0 +1,14 @@
+{
+    "race": "Dwarf",
+    "bio": {
+        "name": "TEST_Dwarf_Cleric_001"
+    },
+    "class": "Cleric",
+    "traits": {
+        "CON": 10,
+        "DEX": 10,
+        "INT": 10,
+        "STR": 10,
+        "WIS": 10
+    }
+}
