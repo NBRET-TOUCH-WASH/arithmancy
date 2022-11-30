@@ -1,4 +1,4 @@
-# ![onions have many layers](/docs/assets/meta/logo/cromniomancy.png)
+# ![onions have many layers](/docs/_assets/meta/logo/cromniomancy.png)
 
 > ### __Arithmancy__ [ˈær ɪθˌmæn si]<br>
 > From Ancient Greek ἀριθμός (*arithmós*, “number”) + *-mancy*.<br>
@@ -55,6 +55,22 @@ Devlogs can be accessed via [their assigned directory](/docs/meta/devlogs/), or 
 ## Gameplay
 
 *Arithmancy*'s gameplay consists of controlling a character and moving about in a world divided in __tiles__. It also features semi-turn-based __combat__ and a wide array of miscellaneous activities.
+
+&nbsp;
+
+### Abstract segments
+
+This section mostly covers segments of the game that do not relate to any specific part of the game such as the different menus.
+
+- [Documentation | **Main menu**](/docs/abstract/mainMenu/mainMenuDocs.md)
+
+&nbsp;
+
+### Pre-gameplay segments
+
+This section covers segments prior to entering the main gameplay phase.
+
+- [Documentation | **Character creation**](/docs/pre/charCreation/charCreatorDocs.md)
 
 ---
 

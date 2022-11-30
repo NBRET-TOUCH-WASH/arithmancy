@@ -1,4 +1,4 @@
-# ![the first layer](/docs/assets/meta/logo/cromniomancy.png)<br>Devlog N°1 - *"Beget"* | (`2022-11-04`)
+# ![the first layer](/docs/_assets/meta/logo/cromniomancy.png)<br>Devlog N°1 - *"Beget"* | (`2022-11-04`)
 
 ![main menu v0.1.0](/docs/assets/gameplay/main_menu/main_menu_cropped.png)
 

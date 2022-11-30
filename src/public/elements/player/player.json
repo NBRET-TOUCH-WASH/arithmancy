@@ -1,0 +1,14 @@
+{
+    "race": "Human",
+    "bio": {
+        "name": "Candac"
+    },
+    "class": "Warrior",
+    "traits": {
+        "CON": 14,
+        "DEX": 24,
+        "INT": 9,
+        "STR": 16,
+        "WIS": 10
+    }
+}
