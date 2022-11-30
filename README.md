@@ -48,6 +48,7 @@ The first is both a way to document the changes made in a more explicit fashion 
 Devlogs can be accessed via [their assigned directory](/docs/meta/devlogs/), or the following list:
 
 - [Devlog N°1](/docs/meta/devlogs/devlog1-mainMenu.md) - *"Beget"* | __Main menu__
+- [Devlog N°2](/docs/meta/devlogs/devlog2-charCreation.md) - *"New OC — do not steal."* | __Character creation__
 
 ---
 
@@ -65,13 +66,11 @@ This section mostly covers segments of the game that do not relate to any specif
 
 &nbsp;
 
-### Character creation
+### Pre-gameplay segments
 
-This section refers to the initial segment of a new game, where the player will create and customize a character to control.
+This section covers segments prior to entering the main gameplay phase.
 
 - [Documentation | **Character creation**](/docs/pre/charCreation/charCreatorDocs.md)
-
-&nbsp;
 
 ---
 
