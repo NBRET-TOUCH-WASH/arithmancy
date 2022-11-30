@@ -1,4 +1,4 @@
-# ![onions have many layers](/docs/assets/meta/logo/cromniomancy.png)
+# ![onions have many layers](/docs/_assets/meta/logo/cromniomancy.png)
 
 > ### __Arithmancy__ [ˈær ɪθˌmæn si]<br>
 > From Ancient Greek ἀριθμός (*arithmós*, “number”) + *-mancy*.<br>
@@ -57,44 +57,21 @@ Devlogs can be accessed via [their assigned directory](/docs/meta/devlogs/), or 
 
 &nbsp;
 
-&nbsp;
+### Abstract segments
 
-### Main menu
+This section mostly covers segments of the game that do not relate to any specific part of the game such as the different menus.
 
-![main menu v0.1.0](/docs/assets/gameplay/main_menu/main_menu_cropped.png)
-
-Upon execution, players will be greeted by the game's main menu; featuring an __ASCII-art header__, __a series of options__ to choose from, __licensing information__ at the bottom left and a __version tag__ at the bottom right.
+- [Documentation | **Main menu**](/docs/abstract/mainMenu/mainMenuDocs.md)
 
 &nbsp;
 
-#### ASCII-art header
-Self-explanatory.
+### Character creation
+
+This section refers to the initial segment of a new game, where the player will create and customize a character to control.
+
+- [Documentation | **Character creation**](/docs/pre/charCreation/charCreatorDocs.md)
 
 &nbsp;
-
-#### Options
-The - admittedly - most interesting part of the menu, these options offer the player to either __start a game__ (*"Beget"*) [*Cf.* [*§Character creation*](#character-creation)], __learn more about the game itself__ and its licensing (*"About"*), ~~__customize__ their user experience~~ display a marvelous poem (*"Options"*), and __quit__ the program (*"Forfare"*).
-
-&nbsp;
-
-#### Licensing information
-Licensing information about the game, which is licensed under the *Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License (CC-BY-NC-SA 4.0)* [*Cf*. [*§Licensing*](#licensing)].
-
-&nbsp;
-
-#### ~~Customize user experience~~
-__[REDACTED]__
-
-&nbsp;
-
-#### Version tag
-Simply displays the executable's version, including both tag (e.g. `v.0.1.0`) and codename (e.g. *"Backwards"*), in order to help users easily distinguish each version ~~(along with just being cool)~~.
-<!--
-&nbsp;
-
-&nbsp;
-
-### Character creation-->
 
 ---
 
